@@ -4,3 +4,9 @@
 # Composer #
 /vendor/
 composer.lock
+
+# Do not commit certificates #
+*.cert
+*.crt
+*.pem
+*.pub
