@@ -10,8 +10,10 @@ class SignedInfoType
 	
 	public function __construct() {
 		$this->CanonicalizationMethod = new CanonicalizationMethodType();
-		$this->CanonicalizationMethod->Algorithm = 'http://www.w3.org/2001/10/xml-exc-c14n#';
 		$this->SignatureMethod = new SignatureMethodType();
-		$this->SignatureMethod->Algorithm = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1';
+		$this->Reference = [
+			new ReferenceType('#_body'),
+			new ReferenceType('#_control'),
+		];
 	}
 }

@@ -6,4 +6,10 @@ class Header
 {
 	public $MessageControlBlock;
 	public $Security;
+
+	public function __construct()
+	{
+		$this->MessageControlBlock = new MessageControlBlock();
+		$this->Security = new SecurityType();
+	}
 }

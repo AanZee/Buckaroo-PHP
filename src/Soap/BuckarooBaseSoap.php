@@ -229,57 +229,9 @@ class BuckarooBaseSoap
         $oHeader = new BuckarooSoapTypes\Common\Header();
 
         // Build MessageControlBlock
-        $oHeader->MessageControlBlock = new BuckarooSoapTypes\Common\MessageControlBlock();
-        $oHeader->MessageControlBlock->Id = '_control';
         $oHeader->MessageControlBlock->WebsiteKey = $this->sWebsiteKey;
         $oHeader->MessageControlBlock->Culture = $this->sLocale;
-        $oHeader->MessageControlBlock->TimeStamp = time();
         $oHeader->MessageControlBlock->Channel = $this->sChannel;
-
-        // Setup the security
-        $oHeader->Security = new BuckarooSoapTypes\Common\SecurityType();
-        $oHeader->Security->Signature = new BuckarooSoapTypes\Common\SignatureType();
-        $oHeader->Security->Signature->SignedInfo = new BuckarooSoapTypes\Common\SignedInfoType();
-
-        // Create a reference type
-        $oReference = new BuckarooSoapTypes\Common\ReferenceType();
-        $oReference->URI = '#_body';
-
-        // Define the algorithm for the Transform option of the reference
-        $oReferenceTransform = new BuckarooSoapTypes\Common\TransformType();
-        $oReferenceTransform->Algorithm = 'http://www.w3.org/2001/10/xml-exc-c14n#';
-        $oReference->Transforms = [
-            $oReferenceTransform
-        ];
-
-        // Define the digest method, in our case sha1
-        $oReference->DigestMethod = new BuckarooSoapTypes\Common\DigestMethodType();
-        $oReference->DigestMethod->Algorithm = 'http://www.w3.org/2000/09/xmldsig#sha1';
-        $oReference->DigestValue = '';
-
-        // Define the reference control transformer
-        $oReferenceControlTransform = new BuckarooSoapTypes\Common\TransformType();
-        $oReferenceControlTransform->Algorithm = 'http://www.w3.org/2001/10/xml-exc-c14n#';
-
-        // Setup the reference control
-        $oReferenceControl = new BuckarooSoapTypes\Common\ReferenceType();
-        $oReferenceControl->URI = '#_control';
-
-        // Define the digest method, in our case sha1
-        $oReferenceControl->DigestMethod = new BuckarooSoapTypes\Common\DigestMethodType();
-        $oReferenceControl->DigestMethod->Algorithm = 'http://www.w3.org/2000/09/xmldsig#sha1';
-        $oReferenceControl->DigestValue = '';
-
-        $oReferenceControl->Transforms = [
-            $oReferenceControlTransform
-        ];
-
-        // Setup the signed info reference
-        $oHeader->Security->Signature->SignatureValue = '';
-        $oHeader->Security->Signature->SignedInfo->Reference = [
-            $oReference,
-            $oReferenceControl
-        ];
 
         // Add the headers to the SOAP client
         $soapHeaders[] = new SOAPHeader('https://checkout.buckaroo.nl/PaymentEngine/', 'MessageControlBlock', $oHeader->MessageControlBlock);
