@@ -8,21 +8,16 @@ class BuckarooServiceTest extends TestCase
 {
     public function testIsInTestMode()
     {
-        $oBuckarooService = new BuckarooTransaction();
+        $oBuckarooService = new BuckarooTransaction('CHANGEME', __DIR__ . '/../test.pem');
         $oBuckarooService->putInTestMode();
-        $oBuckarooService->setPemPath(__DIR__ . '/../test.pem');
-        $oBuckarooService->setWebsiteKey('CHANGEME');
+        $oBuckarooService->setAmountDebit(1.52);
+        $oBuckarooService->setService(BuckarooTransaction::SERVICE_IDEAL);
+        $oBuckarooService->setIdealIssuer('RABONL2U');
+        $oBuckarooService->setInvoice('TEST_INVOICE' . time());
+        $oResult = $oBuckarooService->perform();
         
-//        $oBuckarooService
-//            ->putInTestMode()
-//            ->setWebsiteKey('CHANGEME')
-//            ->setPemPath( __DIR__ . '/../test.pem')
-//            ->setCurrency('EUR')
-//            ->setAmountCredit(1.25)
-//        ->perform();
+        var_dump($oResult);die();
         
-        var_dump($oBuckarooService->perform());die();
-        
-        $this->assertTrue($oBuckarooService->isTesting());
+        $this->assertTrue($oBuckarooService->p());
     }
 }

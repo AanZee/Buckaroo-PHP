@@ -1,6 +1,6 @@
 <?php
 
-namespace SeBuDesign\Buckaroo\SOAP\Types\Requests\Common;
+namespace SeBuDesign\Buckaroo\SOAP\Types\Requests\Headers;
 
 class SecurityType
 {

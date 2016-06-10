@@ -114,7 +114,7 @@ class BuckarooBaseSoap
      *
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      */
-    public function setPemPath($sPathToPem)
+    protected function setPemPath($sPathToPem)
     {
         if (!file_exists($sPathToPem)) {
             throw new BuckarooArgumentException("The PEM ({$sPathToPem}) does not exists");
@@ -146,7 +146,7 @@ class BuckarooBaseSoap
      *
      * @return $this
      */
-    public function setWebsiteKey($sWebsiteKey)
+    protected function setWebsiteKey($sWebsiteKey)
     {
         $this->sWebsiteKey = $sWebsiteKey;
 
@@ -226,16 +226,24 @@ class BuckarooBaseSoap
     protected function addControlBlockHeaders()
     {
         // Envelope and wrapper stuff
-        $oHeader = new BuckarooSoapTypes\Common\Header();
+        $oMessageControlBlock = new BuckarooSoapTypes\Headers\MessageControlBlock();
 
         // Build MessageControlBlock
-        $oHeader->MessageControlBlock->WebsiteKey = $this->sWebsiteKey;
-        $oHeader->MessageControlBlock->Culture = $this->sLocale;
-        $oHeader->MessageControlBlock->Channel = $this->sChannel;
+        $oMessageControlBlock->WebsiteKey = $this->sWebsiteKey;
+        $oMessageControlBlock->Culture = $this->sLocale;
+        $oMessageControlBlock->Channel = $this->sChannel;
 
         // Add the headers to the SOAP client
-        $soapHeaders[] = new SOAPHeader('https://checkout.buckaroo.nl/PaymentEngine/', 'MessageControlBlock', $oHeader->MessageControlBlock);
-        $soapHeaders[] = new SOAPHeader('http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd', 'Security', $oHeader->Security);
+        $soapHeaders[] = new SOAPHeader(
+            'https://checkout.buckaroo.nl/PaymentEngine/', 
+            'MessageControlBlock',
+            $oMessageControlBlock
+        );
+        $soapHeaders[] = new SOAPHeader(
+            'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd',
+            'Security',
+            new BuckarooSoapTypes\Headers\SecurityType()
+        );
 
         $this->oSoapClient->__setSoapHeaders($soapHeaders);
     }
