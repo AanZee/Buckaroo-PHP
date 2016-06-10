@@ -4,26 +4,29 @@ namespace SeBuDesign\Buckaroo\Soap\Types\Requests\Transaction;
 
 class TransactionBody
 {
-    public $Currency;
-    public $AmountDebit;
+    public $AdditionalParameters;
     public $AmountCredit;
+    public $AmountDebit;
+    public $ClientIP;
+    public $ClientUserAgent;
+    public $ContinueOnIncomplete;
+    public $Currency;
+    public $CustomParameters;
+    public $Description;
     public $Invoice;
     public $Order;
-    public $Description;
-    public $ClientIP;
+    public $OriginalTransactionKey;
+    public $OriginalTransactionReference;
+    public $PushURL;
+    public $PushURLFailure;
     public $ReturnURL;
     public $ReturnURLCancel;
     public $ReturnURLError;
     public $ReturnURLReject;
-    public $OriginalTransactionKey;
-    public $StartRecurrent;
     public $Services;
-    public $CustomParameters;
-    public $AdditionalParameters;
-    public $RefundInfo;
-    public $Transaction;
-    public $ContinueOnIncomplete;
-    public $PushURL;
+    public $ServicesExcludedForClient;
+    public $ServicesSelectableByClient;
+    public $StartRecurrent;
 
     public function __construct()
     {

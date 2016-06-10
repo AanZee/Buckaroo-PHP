@@ -197,27 +197,12 @@ class BuckarooBaseSoap
 
         $this->addControlBlockHeaders();
 
-        $return = [];
+        $aReturn = [];
+        $aReturn['result'] = $this->oSoapClient->{$sCall}($this->oRequestBody);
+        $aReturn['response-xml'] = $this->oSoapClient->__getLastResponse();
+        $aReturn['request-xml']  = $this->oSoapClient->__getLastRequest();
 
-        switch($sCall) {
-//            case 'invoiceinfo':
-//                $return['result'] = $this->soapClient->InvoiceInfo($TransactionRequest);
-//                break;
-            case 'transaction':
-                $return['result'] = $this->oSoapClient->TransactionRequest($this->oRequestBody);
-                break;
-//            case 'transactionstatus':
-//                $return['result'] = $this->soapClient->TransactionStatus($TransactionRequest);
-//                break;
-//            case 'refundinfo':
-//                $return['result'] = $this->soapClient->RefundInfo($TransactionRequest);
-//                break;
-        }
-
-        $return['response'] = $this->oSoapClient->__getLastResponse();
-        $return['request']  = $this->oSoapClient->__getLastRequest();
-
-        return $return;
+        return $aReturn;
     }
 
     /**

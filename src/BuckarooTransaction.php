@@ -85,6 +85,20 @@ class BuckarooTransaction extends BuckarooBaseSoap
     }
 
     /**
+     * Set the order
+     *
+     * @param string $sOrder The order number
+     *
+     * @return $this
+     */
+    public function setOrder($sOrder)
+    {
+        $this->oRequestBody->Order = $sOrder;
+
+        return $this;
+    }
+
+    /**
      * Set the transaction description
      *
      * @param string $sDescription The description of the transaction
@@ -108,6 +122,104 @@ class BuckarooTransaction extends BuckarooBaseSoap
     public function setReturnUrl($sReturnUrl)
     {
         $this->oRequestBody->ReturnURL = $sReturnUrl;
+
+        return $this;
+    }
+
+    /**
+     * Sets the url to which the user should be returned to when the payment got cancelled
+     *
+     * @param string $sReturnURLCancel The url
+     *
+     * @return $this
+     */
+    public function setReturnURLCancel($sReturnURLCancel)
+    {
+        $this->oRequestBody->ReturnURLCancel = $sReturnURLCancel;
+
+        return $this;
+    }
+
+    /**
+     * Sets the url to which the user should be returned to when an error occurred
+     *
+     * @param string $sReturnURLError The url
+     *
+     * @return $this
+     */
+    public function setReturnURLError($sReturnURLError)
+    {
+        $this->oRequestBody->ReturnURLError = $sReturnURLError;
+
+        return $this;
+    }
+
+    /**
+     * Sets the url to which the user should be returned to when the payment is rejected
+     *
+     * @param string $sReturnURLReject The url
+     *
+     * @return $this
+     */
+    public function setReturnURLReject($sReturnURLReject)
+    {
+        $this->oRequestBody->ReturnURLReject = $sReturnURLReject;
+
+        return $this;
+    }
+
+    /**
+     * Sets the url to which the payment status should be pushed to
+     *
+     * @param string $sPushURL The url
+     *
+     * @return $this
+     */
+    public function setPushURL($sPushURL)
+    {
+        $this->oRequestBody->PushURL = $sPushURL;
+
+        return $this;
+    }
+
+    /**
+     * Sets the url to which the payment status should be pushed to when it's a failure
+     *
+     * @param string $sPushURLFailure The url
+     *
+     * @return $this
+     */
+    public function setPushURLFailure($sPushURLFailure)
+    {
+        $this->oRequestBody->PushURLFailure = $sPushURLFailure;
+
+        return $this;
+    }
+
+    /**
+     * Sets which services are excluded for the client, see Buckaroo docs for the format
+     *
+     * @param string $sServicesExcludedForClient The services
+     *
+     * @return $this
+     */
+    public function setServicesExcludedForClient($sServicesExcludedForClient)
+    {
+        $this->oRequestBody->ServicesExcludedForClient = $sServicesExcludedForClient;
+
+        return $this;
+    }
+
+    /**
+     * Sets which services are selectable for the client, see Buckaroo docs for the format
+     *
+     * @param string $sServicesSelectableByClient The services
+     *
+     * @return $this
+     */
+    public function setServicesSelectableByClient($sServicesSelectableByClient)
+    {
+        $this->oRequestBody->ServicesSelectableByClient = $sServicesSelectableByClient;
 
         return $this;
     }
@@ -138,9 +250,92 @@ class BuckarooTransaction extends BuckarooBaseSoap
      */
     public function setIdealIssuer($sIssuer)
     {
-        $this->oRequestBody->Services->Service->RequestParameter
-            = new BuckarooSoapCommon\RequestParameter('issuer', $sIssuer);
-        
+        return $this->addServiceParameter('issuer', $sIssuer);
+    }
+
+    /**
+     * Sets the client user agent
+     *
+     * @param string $sUserAgent The client user agent
+     *
+     * @return $this
+     */
+    public function setClientUserAgent($sUserAgent)
+    {
+        $this->oRequestBody->ClientUserAgent = $sUserAgent;
+
+        return $this;
+    }
+
+    /**
+     * Sets the original transaction key
+     *
+     * @param string $sOriginalTransactionKey The original transaction key
+     *
+     * @return $this
+     */
+    public function setOriginalTransactionKey($sOriginalTransactionKey)
+    {
+        $this->oRequestBody->OriginalTransactionKey = $sOriginalTransactionKey;
+
+        return $this;
+    }
+
+    /**
+     * Sets the original transaction reference
+     *
+     * @param string $sOriginalTransactionReference The original transaction reference
+     *
+     * @return $this
+     */
+    public function setOriginalTransactionReference($sOriginalTransactionReference)
+    {
+        $this->oRequestBody->OriginalTransactionReference = $sOriginalTransactionReference;
+
+        return $this;
+    }
+
+    /**
+     * Should the user continue on incomplete?
+     *
+     * @param boolean $bContinueOnIncomplete The actual boolean
+     *
+     * @return $this
+     */
+    public function setContinueOnIncomplete($bContinueOnIncomplete)
+    {
+        $this->oRequestBody->ContinueOnIncomplete = $bContinueOnIncomplete;
+
+        return $this;
+    }
+
+    /**
+     * Is this a recurring payment?
+     *
+     * @param boolean $bStartRecurrent The actual boolean
+     *
+     * @return $this
+     */
+    public function setStartRecurrent($bStartRecurrent)
+    {
+        $this->oRequestBody->StartRecurrent= $bStartRecurrent;
+
+        return $this;
+    }
+
+    /**
+     * Add a service parameter
+     *
+     * @param string $sName The name of the service parameter
+     * @param mixed $mValue The service parameter value
+     *
+     * @return $this
+     */
+    public function addServiceParameter($sName, $mValue)
+    {
+        $this->oRequestBody->Services->Service->RequestParameter[]
+            = new BuckarooSoapCommon\RequestParameter($sName, $mValue);
+
         return $this;
     }
 
@@ -155,6 +350,38 @@ class BuckarooTransaction extends BuckarooBaseSoap
     {
         $this->oRequestBody->ClientIP = new BuckarooSoapCommon\IPAddress($sClientIp);
         
+        return $this;
+    }
+
+    /**
+     * Add a custom parameter
+     * 
+     * @param string $sName The custom parameter key configured in the Buckaroo Payment Plaza
+     * @param mixed $mValue The value of the custom parameter
+     *
+     * @return $this
+     */
+    public function addCustomParameter($sName, $mValue)
+    {
+        $this->oRequestBody->CustomParameters->CustomParameter[]
+            = new BuckarooSoapCommon\CustomParameter($sName, $mValue);
+
+        return $this;
+    }
+
+    /**
+     * Add an additional parameter
+     * 
+     * @param string $sName The additional parameter key configured in the Buckaroo Payment Plaza
+     * @param mixed $mValue The value of the additional parameter
+     *
+     * @return $this
+     */
+    public function addAdditionalParameter($sName, $mValue)
+    {
+        $this->oRequestBody->AdditionalParameters->AdditionalParameter[]
+            = new BuckarooSoapCommon\AdditionalParameter($sName, $mValue);
+
         return $this;
     }
 
@@ -180,14 +407,28 @@ class BuckarooTransaction extends BuckarooBaseSoap
             throw new BuckarooTransactionRequestException("You should choose a payment service");
         }
         
-        if ($this->oRequestBody->Services->Service->Name == self::SERVICE_IDEAL && (is_null($this->oRequestBody->Services->Service->RequestParameter) || $this->oRequestBody->Services->Service->RequestParameter->Name != 'issuer')) {
+        if ($this->oRequestBody->Services->Service->Name == self::SERVICE_IDEAL && is_null($this->oRequestBody->Services->Service->RequestParameter)) {
             throw new BuckarooTransactionRequestException("You should choose an iDeal bank");
+        }
+
+        if ($this->oRequestBody->Services->Service->Name == self::SERVICE_IDEAL && !is_null($this->oRequestBody->Services->Service->RequestParameter) && is_array($this->oRequestBody->Services->Service->RequestParameter)) {
+            $bHasIssuer = false;
+            foreach ($this->oRequestBody->Services->Service->RequestParameter as $oRequestParameter) {
+                if ($oRequestParameter->Name == 'issuer') {
+                    $bHasIssuer = true;
+                    break;
+                }
+            }
+
+            if (!$bHasIssuer) {
+                throw new BuckarooTransactionRequestException("You should choose an iDeal bank");
+            }
         }
 
         if (is_null($this->oRequestBody->Invoice)) {
             throw new BuckarooTransactionRequestException("You should provide an invoice number");
         }
         
-        return $this->call('transaction');
+        return $this->call('TransactionRequest');
     }
 }
