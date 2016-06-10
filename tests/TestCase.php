@@ -24,4 +24,12 @@ class TestCase extends PHPUnit_Framework_TestCase
 
         return $property->getValue($oObject);
     }
+
+    /**
+     * @test
+     */
+    public function it_should_run_assertions()
+    {
+        $this->assertTrue(true);
+    }
 }
