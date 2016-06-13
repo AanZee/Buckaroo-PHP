@@ -5,7 +5,7 @@ namespace SeBuDesign\Buckaroo\Soap;
 use SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException;
 use LinkORB\Buckaroo\SoapClientWSSEC as BuckarooSoapClient;
 use SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException;
-use SeBuDesign\Buckaroo\SOAP\Types\Requests as BuckarooSoapTypes;
+use SeBuDesign\Buckaroo\Soap\Types\Requests as BuckarooSoapTypes;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
 use SoapHeader;
 
