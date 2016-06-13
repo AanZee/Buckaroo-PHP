@@ -4,7 +4,9 @@ namespace SeBuDesign\Buckaroo\Soap;
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException;
 use LinkORB\Buckaroo\SoapClientWSSEC as BuckarooSoapClient;
+use SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException;
 use SeBuDesign\Buckaroo\SOAP\Types\Requests as BuckarooSoapTypes;
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
 use SoapHeader;
 
 class BuckarooBaseSoap
@@ -169,6 +171,16 @@ class BuckarooBaseSoap
         return $this;
     }
 
+    /**
+     * Call a certain SOAP call
+     *
+     * @param string $sCall A valid Buckaroo call
+     *
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface
+     *
+     * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
+     * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException
+     */
     public function call($sCall)
     {
         if (!$this->sPemPath) {
@@ -184,12 +196,14 @@ class BuckarooBaseSoap
 
         $this->addControlBlockHeaders();
 
-        $aReturn = [];
-        $aReturn['result'] = $this->oSoapClient->{$sCall}($this->oRequestBody);
-        $aReturn['response-xml'] = $this->oSoapClient->__getLastResponse();
-        $aReturn['request-xml']  = $this->oSoapClient->__getLastRequest();
+        /** @var BodyInterface $oResult */
+        $oResult = $this->oSoapClient->{$sCall}($this->oRequestBody);
+        
+        if ($oResult->hasErrors()) {
+            throw new BuckarooSoapException("There are errors in your SOAP response, {$this->oSoapClient->__getLastResponse()}. The request XML was {$this->oSoapClient->__getLastRequest()}");
+        }
 
-        return $aReturn;
+        return $oResult;
     }
 
     /**

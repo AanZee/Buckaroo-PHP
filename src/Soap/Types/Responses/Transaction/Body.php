@@ -2,6 +2,7 @@
 
 use SeBuDesign\Buckaroo\BuckarooTransaction;
 
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessageTrait;
 
@@ -13,7 +14,7 @@ use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\ServicesTrait;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\Status;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\StatusTrait;
 
-class Body
+class Body implements BodyInterface
 {
     use ConsumerMessageTrait, StatusTrait, ServicesTrait;
     

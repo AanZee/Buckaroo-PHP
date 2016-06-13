@@ -6,6 +6,7 @@ use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException;
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Transaction as BuckarooSoapTransaction;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Common as BuckarooSoapCommon;
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body;
 
 class BuckarooTransaction extends BuckarooBaseSoap
 {
@@ -408,7 +409,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
     /**
      * Perform the actual call
      *
-     * @return array
+     * @return Body
      *
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException
