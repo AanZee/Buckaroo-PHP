@@ -1,6 +1,6 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction;
 
-use SeBuDesign\Buckaroo\BuckarooTransaction;
+use SeBuDesign\Buckaroo\Transaction;
 
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage;
@@ -381,6 +381,6 @@ class Body implements BodyInterface
      */
     public function isIdealRequest()
     {
-        return $this->getServiceCode() === BuckarooTransaction::SERVICE_IDEAL;
+        return $this->getServiceCode() === Transaction::SERVICE_IDEAL;
     }
 }

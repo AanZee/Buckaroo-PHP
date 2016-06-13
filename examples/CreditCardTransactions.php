@@ -2,23 +2,23 @@
 
 include __DIR__ . "/../vendor/autoload.php";
 
-use SeBuDesign\Buckaroo\BuckarooTransaction;
+use SeBuDesign\Buckaroo\Transaction;
 
-$oTransaction = new BuckarooTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 
 // Credit card payment with specific card type
 $creditCardResponse = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
-    ->setService(BuckarooTransaction::SERVICE_MASTERCARD)
-//    ->setService(BuckarooTransaction::SERVICE_VISA)
-//    ->setService(BuckarooTransaction::SERVICE_AMERICAN_EXPRESS)
-//    ->setService(BuckarooTransaction::SERVICE_MAESTRO)
-//    ->setService(BuckarooTransaction::SERVICE_VPAY)
-//    ->setService(BuckarooTransaction::SERVICE_VISA_ELECTRON)
-//    ->setService(BuckarooTransaction::SERVICE_CARTE_BLEUE)
-//    ->setService(BuckarooTransaction::SERVICE_CARTE_BANCAIRE)
-//    ->setService(BuckarooTransaction::SERVICE_DANKORT)
+    ->setService(Transaction::SERVICE_MASTERCARD)
+//    ->setService(Transaction::SERVICE_VISA)
+//    ->setService(Transaction::SERVICE_AMERICAN_EXPRESS)
+//    ->setService(Transaction::SERVICE_MAESTRO)
+//    ->setService(Transaction::SERVICE_VPAY)
+//    ->setService(Transaction::SERVICE_VISA_ELECTRON)
+//    ->setService(Transaction::SERVICE_CARTE_BLEUE)
+//    ->setService(Transaction::SERVICE_CARTE_BANCAIRE)
+//    ->setService(Transaction::SERVICE_DANKORT)
 
     // Code chosen by merchant to recognize the customer of this transaction
 //    ->addServiceParameter('customercode', 'a_unique_code')

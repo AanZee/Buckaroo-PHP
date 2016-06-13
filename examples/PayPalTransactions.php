@@ -2,15 +2,15 @@
 
 include __DIR__ . "/../vendor/autoload.php";
 
-use SeBuDesign\Buckaroo\BuckarooTransaction;
+use SeBuDesign\Buckaroo\Transaction;
 
-$oTransaction = new BuckarooTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 
 // Without service parameters
 $paypalResponse = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
-    ->setService(BuckarooTransaction::SERVICE_PAYPAL)
+    ->setService(Transaction::SERVICE_PAYPAL)
     ->setInvoice('TEST_INVOICE')
     ->perform();
 
@@ -18,7 +18,7 @@ $paypalResponse = $oTransaction
 $paypalResponse = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
-    ->setService(BuckarooTransaction::SERVICE_PAYPAL)
+    ->setService(Transaction::SERVICE_PAYPAL)
 
     // Email of the client so paypal will pre-fill the email address
     ->addServiceParameter('BuyerEmail', 'email@ofclient.com')

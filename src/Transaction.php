@@ -8,7 +8,7 @@ use SeBuDesign\Buckaroo\Soap\Types\Requests\Transaction as BuckarooSoapTransacti
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Common as BuckarooSoapCommon;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body;
 
-class BuckarooTransaction extends BuckarooBaseSoap
+class Transaction extends BuckarooBaseSoap
 {
     const SERVICE_IDEAL = 'ideal';
     const SERVICE_MASTERCARD = 'mastercard';
@@ -23,11 +23,10 @@ class BuckarooTransaction extends BuckarooBaseSoap
     const SERVICE_PAYPAL = 'paypal';
 
     /**
-     * BuckarooTransaction constructor.
+     * Transaction constructor.
      *
      * @param string $sWebsiteKey The Buckaroo website key
      * @param string $sPemPath    The path to the PEM file
-     *
      */
     public function __construct($sWebsiteKey, $sPemPath)
     {
@@ -270,18 +269,6 @@ class BuckarooTransaction extends BuckarooBaseSoap
             = new BuckarooSoapTransaction\TransactionService($sService, $sAction, $iServiceVersion);
 
         return $this;
-    }
-
-    /**
-     * Sets the iDeal issuer
-     *
-     * @param string $sIssuer The iDeal issuer
-     *
-     * @return $this
-     */
-    public function setIdealIssuer($sIssuer)
-    {
-        return $this->addServiceParameter('issuer', $sIssuer);
     }
 
     /**
