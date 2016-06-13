@@ -20,6 +20,8 @@ Once composer has been updated and the package has been installed, you will be a
 
 @TODO insert usage here
 
+You could check the [examples](examples) folder for the usage.
+
 ## Contributing
 
 Contributions are very welcome. Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
