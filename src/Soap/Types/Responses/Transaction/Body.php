@@ -5,6 +5,7 @@ use SeBuDesign\Buckaroo\BuckarooTransaction;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessageTrait;
 
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\RequestErrors;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\AdditionalParameters;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\CustomParameters;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Services;
@@ -162,6 +163,12 @@ class Body
      * @var AdditionalParameters
      */
     protected $AdditionalParameters;
+
+    /**
+     * The request errors
+     *
+     * @var RequestErrors
+     */
     protected $RequestErrors;
 
     /**
@@ -363,7 +370,7 @@ class Body
      */
     public function hasErrors()
     {
-        return $this->RequestErrors !== null;
+        return $this->RequestErrors !== null && $this->RequestErrors->hasErrors();
     }
 
     /**

@@ -36,14 +36,11 @@ class BuckarooTransaction extends BuckarooBaseSoap
             'CustomParameter'      => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\Parameter',
             'AdditionalParameters' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\AdditionalParameters',
             'AdditionalParameter'  => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\Parameter',
-
-
-            'ParameterError'       => 'LinkORB\\Buckaroo\\SOAP\\Type\\ParameterError',
-            'CustomParameterError' => 'LinkORB\\Buckaroo\\SOAP\\Type\\CustomParameterError',
-            'ServiceError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ServiceError',
-            'ActionError'          => 'LinkORB\\Buckaroo\\SOAP\\Type\\ActionError',
-            'ChannelError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ChannelError',
-            'RequestErrors'        => 'LinkORB\\Buckaroo\\SOAP\\Type\\RequestErrors',
+            'RequestErrors'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\RequestErrors',
+            'ParameterError'       => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
+            'CustomParameterError' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
+            'ServiceError'         => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
+            'ActionError'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
         ]);
 
         $this->oRequestBody = new BuckarooSoapTransaction\TransactionBody();
