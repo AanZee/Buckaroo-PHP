@@ -3,6 +3,16 @@
 trait ConsumerMessageTrait
 {
     /**
+     * The consumer message object
+     *
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage
+     */
+    public function getConsumerMessageObject()
+    {
+        return $this->ConsumerMessage;
+    }
+    
+    /**
      * Does the response has a consumer message
      *
      * @return boolean

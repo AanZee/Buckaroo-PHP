@@ -15,7 +15,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
      * BuckarooTransaction constructor.
      *
      * @param string $sWebsiteKey The Buckaroo website key
-     * @param string $sPemPath The path to the PEM file
+     * @param string $sPemPath    The path to the PEM file
      *
      */
     public function __construct($sWebsiteKey, $sPemPath)
@@ -23,13 +23,17 @@ class BuckarooTransaction extends BuckarooBaseSoap
         $this->setWebsiteKey($sWebsiteKey);
         $this->setPemPath($sPemPath);
         $this->addSoapOption('classmap', [
-            'Body'                 => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
-            
-            'Status'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Status',
-            'StatusCode'           => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\StatusCode',
-            'StatusSubCode'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\StatusCode',
-            
-            'RequiredAction'       => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\RequiredAction',
+            'Body'              => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
+            'Status'            => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\Status',
+            'StatusCode'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',
+            'StatusSubCode'     => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',
+            'ConsumerMessage'   => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\ConsumerMessage\\ConsumerMessage',
+            'Services'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Service\\Services',
+            'Service'           => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Service\\Service',
+            'ResponseParameter' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Service\\ResponseParameter',
+            'RequiredAction'    => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\RequiredAction',
+
+
             'ParameterError'       => 'LinkORB\\Buckaroo\\SOAP\\Type\\ParameterError',
             'CustomParameterError' => 'LinkORB\\Buckaroo\\SOAP\\Type\\CustomParameterError',
             'ServiceError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ServiceError',
@@ -37,12 +41,12 @@ class BuckarooTransaction extends BuckarooBaseSoap
             'ChannelError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ChannelError',
             'RequestErrors'        => 'LinkORB\\Buckaroo\\SOAP\\Type\\RequestErrors',
         ]);
-        
+
         $this->oRequestBody = new BuckarooSoapTransaction\TransactionBody();
         $this->oRequestBody->Currency = 'EUR';
-        $this->oRequestBody->StartRecurrent = FALSE;
+        $this->oRequestBody->StartRecurrent = false;
     }
-    
+
     /**
      * Set the currency of the transaction
      *
@@ -59,7 +63,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
 
     /**
      * Set the debit amount
-     * 
+     *
      * @param float $fAmountDebit The amount a person has to pay
      *
      * @return $this
@@ -73,7 +77,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
 
     /**
      * Set the credit amount
-     * 
+     *
      * @param float $fAmountCredit The amount a person has to get
      *
      * @return $this
@@ -242,9 +246,9 @@ class BuckarooTransaction extends BuckarooBaseSoap
     /**
      * Set the transaction service, please use the constants defined at the top of this class
      *
-     * @param string $sService The payment service
+     * @param string  $sService        The payment service
      * @param integer $iServiceVersion The payment service version
-     * @param string $sAction The action
+     * @param string  $sAction         The action
      *
      * @return $this
      */
@@ -258,7 +262,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
 
     /**
      * Sets the iDeal issuer
-     * 
+     *
      * @param string $sIssuer The iDeal issuer
      *
      * @return $this
@@ -333,7 +337,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
      */
     public function setStartRecurrent($bStartRecurrent)
     {
-        $this->oRequestBody->StartRecurrent= $bStartRecurrent;
+        $this->oRequestBody->StartRecurrent = $bStartRecurrent;
 
         return $this;
     }
@@ -341,8 +345,8 @@ class BuckarooTransaction extends BuckarooBaseSoap
     /**
      * Add a service parameter
      *
-     * @param string $sName The name of the service parameter
-     * @param mixed $mValue The service parameter value
+     * @param string $sName  The name of the service parameter
+     * @param mixed  $mValue The service parameter value
      *
      * @return $this
      */
@@ -356,7 +360,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
 
     /**
      * Set the client IP
-     * 
+     *
      * @param string $sClientIp The client IP
      *
      * @return $this
@@ -364,15 +368,15 @@ class BuckarooTransaction extends BuckarooBaseSoap
     public function setClientIp($sClientIp)
     {
         $this->oRequestBody->ClientIP = new BuckarooSoapCommon\IPAddress($sClientIp);
-        
+
         return $this;
     }
 
     /**
      * Add a custom parameter
-     * 
-     * @param string $sName The custom parameter key configured in the Buckaroo Payment Plaza
-     * @param mixed $mValue The value of the custom parameter
+     *
+     * @param string $sName  The custom parameter key configured in the Buckaroo Payment Plaza
+     * @param mixed  $mValue The value of the custom parameter
      *
      * @return $this
      */
@@ -386,9 +390,9 @@ class BuckarooTransaction extends BuckarooBaseSoap
 
     /**
      * Add an additional parameter
-     * 
-     * @param string $sName The additional parameter key configured in the Buckaroo Payment Plaza
-     * @param mixed $mValue The value of the additional parameter
+     *
+     * @param string $sName  The additional parameter key configured in the Buckaroo Payment Plaza
+     * @param mixed  $mValue The value of the additional parameter
      *
      * @return $this
      */
@@ -413,7 +417,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
         if (is_null($this->oRequestBody->AmountDebit) && is_null($this->oRequestBody->AmountCredit)) {
             throw new BuckarooTransactionRequestException("At least one of the AmountDebit or AmountCredit should be set", 500);
         }
-        
+
         if ($this->oRequestBody->AmountDebit === 0 || $this->oRequestBody->AmountCredit === 0) {
             throw new BuckarooTransactionRequestException("Amount should be greater than 0", 500);
         }
@@ -421,7 +425,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
         if (is_null($this->oRequestBody->Services->Service)) {
             throw new BuckarooTransactionRequestException("You should choose a payment service");
         }
-        
+
         if ($this->oRequestBody->Services->Service->Name == self::SERVICE_IDEAL && is_null($this->oRequestBody->Services->Service->RequestParameter)) {
             throw new BuckarooTransactionRequestException("You should choose an iDeal bank");
         }
@@ -443,7 +447,7 @@ class BuckarooTransaction extends BuckarooBaseSoap
         if (is_null($this->oRequestBody->Invoice)) {
             throw new BuckarooTransactionRequestException("You should provide an invoice number");
         }
-        
+
         return $this->call('TransactionRequest');
     }
 }

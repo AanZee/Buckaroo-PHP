@@ -3,16 +3,16 @@
 use SeBuDesign\Buckaroo\BuckarooTransaction;
 
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessageInterface;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessageTrait;
 
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Services;
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\ServicesTrait;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\Status;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\StatusInterface;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\StatusTrait;
 
-class Body implements ConsumerMessageInterface, StatusInterface
+class Body
 {
-    use ConsumerMessageTrait, StatusTrait;
+    use ConsumerMessageTrait, StatusTrait, ServicesTrait;
     
     /**
      * The transaction key
@@ -139,9 +139,14 @@ class Body implements ConsumerMessageInterface, StatusInterface
      * @var string
      */
     protected $PayerHash;
-    
-    
+
+    /**
+     * The response services
+     *
+     * @var Services
+     */
     protected $Services;
+    
     protected $CustomParameters;
     protected $AdditionalParameters;
     protected $RequestErrors;
@@ -191,16 +196,6 @@ class Body implements ConsumerMessageInterface, StatusInterface
     public function getServiceCode()
     {
         return $this->ServiceCode;
-    }
-
-    /**
-     * Get the status object
-     *
-     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\Status
-     */
-    public function getStatusObject()
-    {
-        return $this->Status;
     }
 
     /**
@@ -346,16 +341,6 @@ class Body implements ConsumerMessageInterface, StatusInterface
     public function getRecurring()
     {
         return $this->Recurring;
-    }
-
-    /**
-     * The consumer message object
-     * 
-     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage
-     */
-    public function getConsumerMessageObject()
-    {
-        return $this->ConsumerMessage;
     }
 
     /**

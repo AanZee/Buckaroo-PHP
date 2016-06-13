@@ -3,6 +3,16 @@
 trait StatusTrait
 {
     /**
+     * Get the status object
+     *
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\Status
+     */
+    public function getStatusObject()
+    {
+        return $this->Status;
+    }
+    
+    /**
      * Get the status code object
      *
      * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\StatusCode
