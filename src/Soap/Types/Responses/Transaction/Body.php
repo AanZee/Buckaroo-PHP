@@ -5,6 +5,8 @@ use SeBuDesign\Buckaroo\BuckarooTransaction;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessageTrait;
 
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\AdditionalParameters;
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\CustomParameters;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Services;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\ServicesTrait;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\Status;
@@ -146,8 +148,19 @@ class Body
      * @var Services
      */
     protected $Services;
-    
+
+    /**
+     * The custom parameters
+     *
+     * @var CustomParameters
+     */
     protected $CustomParameters;
+
+    /**
+     * The additional parameters
+     *
+     * @var AdditionalParameters
+     */
     protected $AdditionalParameters;
     protected $RequestErrors;
 

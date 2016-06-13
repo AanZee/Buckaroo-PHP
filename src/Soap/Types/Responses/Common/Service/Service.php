@@ -1,7 +1,13 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service;
 
-class Service
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter;
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\ParametersInterface;
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\ParametersTrait;
+
+class Service implements ParametersInterface
 {
+    use ParametersTrait;
+
     /**
      * The name of the service
      *
@@ -12,7 +18,7 @@ class Service
     /**
      * An array of response parameters
      *
-     * @var ResponseParameter[]
+     * @var Parameter[]
      */
     protected $ResponseParameter;
 
@@ -29,70 +35,16 @@ class Service
     /**
      * Get all of the response parameters
      *
-     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\ResponseParameter[]
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter[]
      */
-    public function getResponseParameters()
+    public function getParameters()
     {
-        if ($this->ResponseParameter instanceof ResponseParameter) {
+        if ($this->ResponseParameter instanceof Parameter) {
             $this->ResponseParameter = [
                 $this->ResponseParameter
             ];
         }
         
         return $this->ResponseParameter;
-    }
-
-    /**
-     * Does the service has response parameters
-     *
-     * @return bool
-     */
-    public function hasResponseParameters()
-    {
-        return $this->ResponseParameter !== null;
-    }
-
-    /**
-     * Does the response parameter exists
-     *
-     * @param string $sName The name of the response parameter
-     *
-     * @return bool
-     */
-    public function hasResponseParameter($sName)
-    {
-        $bHasResponseParameter = false;
-
-        foreach ($this->getResponseParameters() as $oResponseParameter)
-        {
-            if ($oResponseParameter->getName() == $sName) {
-                $bHasResponseParameter = true;
-                break;
-            }
-        }
-
-        return $bHasResponseParameter;
-    }
-
-    /**
-     * Get the value of a response parameter
-     *
-     * @param string $sName The name of the response parameter
-     *
-     * @return mixed
-     */
-    public function getResponseParameter($sName)
-    {
-        $mResponseParameter = false;
-
-        foreach ($this->getResponseParameters() as $oResponseParameter)
-        {
-            if ($oResponseParameter->getName() == $sName) {
-                $mResponseParameter = $oResponseParameter->getValue();
-                break;
-            }
-        }
-
-        return $mResponseParameter;
     }
 }
