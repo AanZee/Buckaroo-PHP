@@ -22,6 +22,21 @@ class BuckarooTransaction extends BuckarooBaseSoap
     {
         $this->setWebsiteKey($sWebsiteKey);
         $this->setPemPath($sPemPath);
+        $this->addSoapOption('classmap', [
+            'Body'                 => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
+            
+            'Status'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Status',
+            'StatusCode'           => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\StatusCode',
+            'StatusSubCode'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\StatusCode',
+            
+            'RequiredAction'       => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\RequiredAction',
+            'ParameterError'       => 'LinkORB\\Buckaroo\\SOAP\\Type\\ParameterError',
+            'CustomParameterError' => 'LinkORB\\Buckaroo\\SOAP\\Type\\CustomParameterError',
+            'ServiceError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ServiceError',
+            'ActionError'          => 'LinkORB\\Buckaroo\\SOAP\\Type\\ActionError',
+            'ChannelError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ChannelError',
+            'RequestErrors'        => 'LinkORB\\Buckaroo\\SOAP\\Type\\RequestErrors',
+        ]);
         
         $this->oRequestBody = new BuckarooSoapTransaction\TransactionBody();
         $this->oRequestBody->Currency = 'EUR';

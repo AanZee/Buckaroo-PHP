@@ -67,19 +67,6 @@ class BuckarooBaseSoap
      */
     protected $aSoapOptions = [
         'trace'    => 1,
-        'classmap' => [
-            'Body'                 => 'LinkORB\\Buckaroo\\SOAP\\Type\\Body',
-            'Status'               => 'LinkORB\\Buckaroo\\SOAP\\Type\\Status',
-            'RequiredAction'       => 'LinkORB\\Buckaroo\\SOAP\\Type\\RequiredAction',
-            'ParameterError'       => 'LinkORB\\Buckaroo\\SOAP\\Type\\ParameterError',
-            'CustomParameterError' => 'LinkORB\\Buckaroo\\SOAP\\Type\\CustomParameterError',
-            'ServiceError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ServiceError',
-            'ActionError'          => 'LinkORB\\Buckaroo\\SOAP\\Type\\ActionError',
-            'ChannelError'         => 'LinkORB\\Buckaroo\\SOAP\\Type\\ChannelError',
-            'RequestErrors'        => 'LinkORB\\Buckaroo\\SOAP\\Type\\RequestErrors',
-            'StatusCode'           => 'LinkORB\\Buckaroo\\SOAP\\Type\\StatusCode',
-            'StatusSubCode'        => 'LinkORB\\Buckaroo\\SOAP\\Type\\StatusCode',
-        ],
     ];
 
     /**
