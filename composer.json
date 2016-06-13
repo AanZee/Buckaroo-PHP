@@ -1,0 +1,36 @@
+{
+    "name": "sebudesign/buckaroo-php",
+    "description": "An easy to use Buckaroo library for PHP",
+    "keywords": ["buckaroo", "payments"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sven Buijsrogge",
+            "email": "sven@sebudesign.nl"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/SeBuDesign/Buckaroo-PHP/issues",
+        "source": "https://github.com/SeBuDesign/Buckaroo-PHP"
+    },
+    "require": {
+        "php": ">=5.5.9",
+        "linkorb/buckaroo": "^1.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "mockery/mockery": "~0.9",
+        "mikey179/vfsStream": "~1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SeBuDesign\\Buckaroo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SeBuDesign\\Buckaroo\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable"
+}
