@@ -11,6 +11,16 @@ use SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body;
 class BuckarooTransaction extends BuckarooBaseSoap
 {
     const SERVICE_IDEAL = 'ideal';
+    const SERVICE_MASTERCARD = 'mastercard';
+    const SERVICE_VISA = 'visa';
+    const SERVICE_AMERICAN_EXPRESS = 'Amex';
+    const SERVICE_MAESTRO = 'maestro';
+    const SERVICE_VPAY = 'Vpay';
+    const SERVICE_VISA_ELECTRON = 'visaelectron';
+    const SERVICE_CARTE_BLEUE = 'cartebleuevisa';
+    const SERVICE_CARTE_BANCAIRE = 'Cartebancaire';
+    const SERVICE_DANKORT = 'dankort';
+    const SERVICE_PAYPAL = 'paypal';
 
     /**
      * BuckarooTransaction constructor.
