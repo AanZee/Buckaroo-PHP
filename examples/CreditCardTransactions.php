@@ -3,6 +3,7 @@
 include __DIR__ . "/../vendor/autoload.php";
 
 use SeBuDesign\Buckaroo\Transaction;
+use SeBuDesign\Buckaroo\CreditCardTransaction;
 
 $oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 
@@ -29,4 +30,17 @@ $creditCardResponse = $oTransaction
     ->setInvoice('TEST_INVOICE')
     ->perform();
 
-var_dump($creditCardResponse);
+// Get all static credit card types
+$staticCreditCardTypes = CreditCardTransaction::getStaticCreditCardTypes();
+
+// Specific simplified credit card transaction
+$oCreditCardTransaction = new CreditCardTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$creditCardResponse2 = $oCreditCardTransaction
+    ->putInTestMode()
+    ->setService(Transaction::SERVICE_VISA)
+    ->setCustomerCode('test')
+    ->setAmount(1.23)
+    ->setInvoice('TEST_INVOICE')
+    ->perform();
+
+var_dump($staticCreditCardTypes, $creditCardResponse, $creditCardResponse2);

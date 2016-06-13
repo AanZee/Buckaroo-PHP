@@ -3,7 +3,7 @@
 include __DIR__ . "/../vendor/autoload.php";
 
 use SeBuDesign\Buckaroo\Transaction;
-use \SeBuDesign\Buckaroo\IdealTransaction;
+use SeBuDesign\Buckaroo\IdealTransaction;
 
 $oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 
@@ -21,11 +21,11 @@ $staticIdealBanks = IdealTransaction::getStaticIdealBanks();
 
 // Specific simplified ideal transaction
 $oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$oIdealTransaction
+$iDealResponse2 = $oIdealTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setIdealIssuer(IdealTransaction::BANK_BUNQ)
     ->setInvoice('TEST_INVOICE')
     ->perform();
 
-var_dump($iDealResponse);
+var_dump($staticIdealBanks, $iDealResponse, $iDealResponse2);
