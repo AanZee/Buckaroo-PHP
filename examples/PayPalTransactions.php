@@ -1,13 +1,14 @@
 <?php
 
 include __DIR__ . "/../vendor/autoload.php";
+use SeBuDesign\Buckaroo\Transaction;
+use SeBuDesign\Buckaroo\PayPalTransaction;
 
 /**
  *
  * WITH PAYPAL TRANSACTION CLASS
  *
  */
-use SeBuDesign\Buckaroo\PayPalTransaction;
 
 // With service parameters
 $oTransaction = new PayPalTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
@@ -34,7 +35,6 @@ $paypalResponse2 = $oTransaction
  * WITH TRANSACTION CLASS
  *
  */
-use SeBuDesign\Buckaroo\Transaction;
 
 // With service parameters
 $oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');

@@ -1,13 +1,14 @@
 <?php
 
 include __DIR__ . "/../vendor/autoload.php";
+use SeBuDesign\Buckaroo\Transaction;
+use SeBuDesign\Buckaroo\CreditCardTransaction;
 
 /**
  *
  * WITH CREDIT CARD TRANSACTION CLASS
  *
  */
-use SeBuDesign\Buckaroo\CreditCardTransaction;
 
 // Get all static credit card types
 $staticCreditCardTypes = CreditCardTransaction::getStaticCreditCardTypes();
@@ -40,7 +41,6 @@ $creditCardResponse2 = $oCreditCardTransaction
  * WITH TRANSACTION CLASS
  *
  */
-use SeBuDesign\Buckaroo\Transaction;
 
 // Credit card payment
 $oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
