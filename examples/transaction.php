@@ -6,7 +6,7 @@ use SeBuDesign\Buckaroo\BuckarooTransaction;
 
 $oTransaction = new BuckarooTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 
-$aResponse = $oTransaction
+$iDealResponse = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
     ->setService(BuckarooTransaction::SERVICE_IDEAL)
@@ -14,4 +14,18 @@ $aResponse = $oTransaction
     ->setInvoice('TEST_INVOICE')
     ->perform();
 
-var_dump($aResponse);
+$masterCardResponse = $oTransaction
+    ->putInTestMode()
+    ->setAmountDebit(1.23)
+    ->setService(BuckarooTransaction::SERVICE_MASTERCARD)
+    ->setInvoice('TEST_INVOICE')
+    ->perform();
+
+$paypalResponse = $oTransaction
+    ->putInTestMode()
+    ->setAmountDebit(1.23)
+    ->setService(BuckarooTransaction::SERVICE_PAYPAL)
+    ->setInvoice('TEST_INVOICE')
+    ->perform();
+
+var_dump($iDealResponse, $masterCardResponse, $paypalResponse);
