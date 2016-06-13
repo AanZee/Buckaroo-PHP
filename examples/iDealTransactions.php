@@ -2,24 +2,13 @@
 
 include __DIR__ . "/../vendor/autoload.php";
 
-use SeBuDesign\Buckaroo\Transaction;
+/**
+ *
+ * WITH IDEAL TRANSACTION CLASS
+ *
+ */
 use SeBuDesign\Buckaroo\IdealTransaction;
 
-$oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-
-// Transaction based
-$iDealResponse = $oTransaction
-    ->putInTestMode()
-    ->setAmountDebit(1.23)
-    ->setService(Transaction::SERVICE_IDEAL)
-    ->addServiceParameter('issuer', IdealTransaction::BANK_BUNQ)
-    ->setInvoice('TEST_INVOICE')
-    ->perform();
-
-// Get all static iDeal banks
-$staticIdealBanks = IdealTransaction::getStaticIdealBanks();
-
-// Specific simplified ideal transaction
 $oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 $iDealResponse2 = $oIdealTransaction
     ->putInTestMode()
@@ -28,4 +17,21 @@ $iDealResponse2 = $oIdealTransaction
     ->setInvoice('TEST_INVOICE')
     ->perform();
 
-var_dump($staticIdealBanks, $iDealResponse, $iDealResponse2);
+// Get all static iDeal banks
+$staticIdealBanks = IdealTransaction::getStaticIdealBanks();
+
+/**
+ *
+ * WITH TRANSACTION CLASS
+ *
+ */
+use SeBuDesign\Buckaroo\Transaction;
+
+$oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$iDealResponse = $oTransaction
+    ->putInTestMode()
+    ->setAmountDebit(1.23)
+    ->setService(Transaction::SERVICE_IDEAL)
+    ->addServiceParameter('issuer', IdealTransaction::BANK_BUNQ)
+    ->setInvoice('TEST_INVOICE')
+    ->perform();
