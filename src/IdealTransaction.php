@@ -14,7 +14,7 @@ class IdealTransaction extends Transaction
     const BANK_BUNQ = 'BUNQNL2A';
 
     /**
-     * BuckarooIdealTransaction constructor.
+     * IdealTransaction constructor.
      *
      * @param string $sWebsiteKey The Buckaroo website key
      * @param string $sPemPath    The path to the PEM file
