@@ -1,13 +1,14 @@
 <?php
 
 include __DIR__ . "/../vendor/autoload.php";
+use SeBuDesign\Buckaroo\IdealTransaction;
+use SeBuDesign\Buckaroo\Transaction;
 
 /**
  *
  * WITH IDEAL TRANSACTION CLASS
  *
  */
-use SeBuDesign\Buckaroo\IdealTransaction;
 
 $oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 $iDealResponse2 = $oIdealTransaction
@@ -25,7 +26,6 @@ $staticIdealBanks = IdealTransaction::getStaticIdealBanks();
  * WITH TRANSACTION CLASS
  *
  */
-use SeBuDesign\Buckaroo\Transaction;
 
 $oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 $iDealResponse = $oTransaction
@@ -35,3 +35,5 @@ $iDealResponse = $oTransaction
     ->addServiceParameter('issuer', IdealTransaction::BANK_BUNQ)
     ->setInvoice('TEST_INVOICE')
     ->perform();
+
+var_dump($iDealResponse, $iDealResponse2);

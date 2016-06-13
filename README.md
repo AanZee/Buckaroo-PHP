@@ -22,6 +22,22 @@ Once composer has been updated and the package has been installed, you will be a
 
 You could check the [examples](examples) folder for the usage.
 
+## What needs to be done?
+
+- Write Unit tests
+- Add TransactionStatus call
+- Add TransactionRequestSpecification call
+- Add Refund call
+- Add InvoiceInfo call
+- Add DataRequest call
+- Add DataRequestSpecification call
+- Add Cancel Transaction call
+- Add Iban converter call
+- Add Bban to Iban converter call
+- Add the other payment methods of Buckaroo
+- Add some more documentation about the types that are allowed
+- Add some more validation to types and responses
+
 ## Contributing
 
 Contributions are very welcome. Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
@@ -33,6 +49,7 @@ If you discover any security related issues, please email sven@sebudesign.nl ins
 ## Credits
 
 - [Sven Buijsrogge][link-author]
+- [LinkORB][link-linkorb] - Special thanks to LinkORB to create a good base for this package
 - [All Contributors][link-contributors]
 
 ## License
@@ -47,3 +64,4 @@ The MIT License (MIT). Please see [License File](LICENSE.txt) for more informati
 [link-downloads]: https://packagist.org/packages/sebudesign/buckaroo-php
 [link-author]: https://github.com/SeBuDesign
 [link-contributors]: ../../contributors
+[link-linkorb]: https://github.com/linkorb/buckaroo
