@@ -3,12 +3,13 @@
 include __DIR__ . "/../vendor/autoload.php";
 use SeBuDesign\Buckaroo\IdealTransaction;
 use SeBuDesign\Buckaroo\TransactionStatus;
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 
 $oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
 $iDealResponse = $oIdealTransaction
     ->putInTestMode()
     ->setAmount(1.23)
-    ->setIdealIssuer(IdealTransaction::BANK_BUNQ)
+    ->setIdealIssuer(ServiceHelper::IDEAL_BUNQ)
     ->setInvoice('TEST_INVOICE')
     ->perform();
 
@@ -16,7 +17,7 @@ $oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.
 $iDealResponse2 = $oIdealTransaction
     ->putInTestMode()
     ->setAmount(1.23)
-    ->setIdealIssuer(IdealTransaction::BANK_BUNQ)
+    ->setIdealIssuer(ServiceHelper::IDEAL_BUNQ)
     ->setInvoice('TEST_INVOICE')
     ->perform();
 

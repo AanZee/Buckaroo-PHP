@@ -3,25 +3,15 @@
 namespace SeBuDesign\Buckaroo;
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException;
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Transaction as BuckarooSoapTransaction;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Common as BuckarooSoapCommon;
+use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Service;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body;
 
 class Transaction extends BuckarooBaseSoap
 {
-    const SERVICE_IDEAL = 'ideal';
-    const SERVICE_MASTERCARD = 'mastercard';
-    const SERVICE_VISA = 'visa';
-    const SERVICE_AMERICAN_EXPRESS = 'Amex';
-    const SERVICE_MAESTRO = 'maestro';
-    const SERVICE_VPAY = 'Vpay';
-    const SERVICE_VISA_ELECTRON = 'visaelectron';
-    const SERVICE_CARTE_BLEUE = 'cartebleuevisa';
-    const SERVICE_CARTE_BANCAIRE = 'Cartebancaire';
-    const SERVICE_DANKORT = 'dankort';
-    const SERVICE_PAYPAL = 'paypal';
-
     /**
      * Transaction constructor.
      *
@@ -425,11 +415,11 @@ class Transaction extends BuckarooBaseSoap
             throw new BuckarooTransactionRequestException("You should choose a payment service");
         }
 
-        if ($this->oRequestBody->Services->Service->Name == self::SERVICE_IDEAL && is_null($this->oRequestBody->Services->Service->RequestParameter)) {
+        if ($this->oRequestBody->Services->Service->Name == ServiceHelper::SERVICE_IDEAL && is_null($this->oRequestBody->Services->Service->RequestParameter)) {
             throw new BuckarooTransactionRequestException("You should choose an iDeal bank");
         }
 
-        if ($this->oRequestBody->Services->Service->Name == self::SERVICE_IDEAL && !is_null($this->oRequestBody->Services->Service->RequestParameter) && is_array($this->oRequestBody->Services->Service->RequestParameter)) {
+        if ($this->oRequestBody->Services->Service->Name == ServiceHelper::SERVICE_IDEAL && !is_null($this->oRequestBody->Services->Service->RequestParameter) && is_array($this->oRequestBody->Services->Service->RequestParameter)) {
             $bHasIssuer = false;
             foreach ($this->oRequestBody->Services->Service->RequestParameter as $oRequestParameter) {
                 if ($oRequestParameter->Name == 'issuer') {

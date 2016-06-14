@@ -2,6 +2,7 @@
 
 include __DIR__ . "/../vendor/autoload.php";
 use SeBuDesign\Buckaroo\Transaction;
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 use SeBuDesign\Buckaroo\CreditCardTransaction;
 
 /**
@@ -19,15 +20,15 @@ $creditCardResponse2 = $oCreditCardTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setInvoice('TEST_INVOICE')
-    ->setService(Transaction::SERVICE_MASTERCARD)
-//    ->setService(Transaction::SERVICE_VISA)
-//    ->setService(Transaction::SERVICE_AMERICAN_EXPRESS)
-//    ->setService(Transaction::SERVICE_MAESTRO)
-//    ->setService(Transaction::SERVICE_VPAY)
-//    ->setService(Transaction::SERVICE_VISA_ELECTRON)
-//    ->setService(Transaction::SERVICE_CARTE_BLEUE)
-//    ->setService(Transaction::SERVICE_CARTE_BANCAIRE)
-//    ->setService(Transaction::SERVICE_DANKORT)
+    ->setService(ServiceHelper::SERVICE_MASTERCARD)
+//    ->setService(ServiceHelper::SERVICE_VISA)
+//    ->setService(ServiceHelper::SERVICE_AMERICAN_EXPRESS)
+//    ->setService(ServiceHelper::SERVICE_MAESTRO)
+//    ->setService(ServiceHelper::SERVICE_VPAY)
+//    ->setService(ServiceHelper::SERVICE_VISA_ELECTRON)
+//    ->setService(ServiceHelper::SERVICE_CARTE_BLEUE)
+//    ->setService(ServiceHelper::SERVICE_CARTE_BANCAIRE)
+//    ->setService(ServiceHelper::SERVICE_DANKORT)
 
     // Optional; Code chosen by merchant to recognize the customer of this transaction
     ->setCustomerCode('test')
@@ -48,15 +49,15 @@ $creditCardResponse = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
     ->setInvoice('TEST_INVOICE')
-    ->setService(Transaction::SERVICE_MASTERCARD)
-//    ->setService(Transaction::SERVICE_VISA)
-//    ->setService(Transaction::SERVICE_AMERICAN_EXPRESS)
-//    ->setService(Transaction::SERVICE_MAESTRO)
-//    ->setService(Transaction::SERVICE_VPAY)
-//    ->setService(Transaction::SERVICE_VISA_ELECTRON)
-//    ->setService(Transaction::SERVICE_CARTE_BLEUE)
-//    ->setService(Transaction::SERVICE_CARTE_BANCAIRE)
-//    ->setService(Transaction::SERVICE_DANKORT)
+    ->setService(ServiceHelper::SERVICE_MASTERCARD)
+//    ->setService(ServiceHelper::SERVICE_VISA)
+//    ->setService(ServiceHelper::SERVICE_AMERICAN_EXPRESS)
+//    ->setService(ServiceHelper::SERVICE_MAESTRO)
+//    ->setService(ServiceHelper::SERVICE_VPAY)
+//    ->setService(ServiceHelper::SERVICE_VISA_ELECTRON)
+//    ->setService(ServiceHelper::SERVICE_CARTE_BLEUE)
+//    ->setService(ServiceHelper::SERVICE_CARTE_BANCAIRE)
+//    ->setService(ServiceHelper::SERVICE_DANKORT)
 
     // Optional; Code chosen by merchant to recognize the customer of this transaction
     ->addServiceParameter('customercode', 'a_unique_code')

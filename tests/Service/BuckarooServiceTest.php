@@ -2,6 +2,7 @@
 
 namespace SeBuDesign\Buckaroo\Tests;
 
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 use SeBuDesign\Buckaroo\Transaction;
 
 class BuckarooTransactionTest extends TestCase
@@ -91,7 +92,7 @@ class BuckarooTransactionTest extends TestCase
     {
         $this->oBuckarooTransaction
             ->setAmountCredit(1.23)
-            ->setService(Transaction::SERVICE_IDEAL)
+            ->setService(ServiceHelper::SERVICE_IDEAL)
             ->perform();
     }
 

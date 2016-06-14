@@ -1,6 +1,7 @@
 <?php namespace SeBuDesign\Buckaroo;
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException;
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 
 class PayPalTransaction extends Transaction
 {
@@ -14,7 +15,7 @@ class PayPalTransaction extends Transaction
     {
         parent::__construct($sWebsiteKey, $sPemPath);
 
-        $this->setService(Transaction::SERVICE_PAYPAL);
+        $this->setService(ServiceHelper::SERVICE_PAYPAL);
     }
 
     /**

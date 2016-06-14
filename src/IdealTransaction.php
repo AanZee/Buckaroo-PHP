@@ -1,18 +1,9 @@
 <?php namespace SeBuDesign\Buckaroo;
 
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
+
 class IdealTransaction extends Transaction
 {
-    const BANK_ABN_AMRO = 'ABNANL2A';
-    const BANK_ASN_BANK = 'ASNBNL21';
-    const BANK_ING = 'INGBNL2A';
-    const BANK_RABOBANK = 'RABONL2U';
-    const BANK_SNS_BANK = 'SNSBNL2A';
-    const BANK_REGIO_BANK = 'RBRBNL21';
-    const BANK_TRIODOS_BANK = 'TRIONL2U';
-    const BANK_VAN_LANSCHOT = 'FVLBNL22';
-    const BANK_KNAB_BANK = 'KNABNL2H';
-    const BANK_BUNQ = 'BUNQNL2A';
-
     /**
      * IdealTransaction constructor.
      *
@@ -23,7 +14,7 @@ class IdealTransaction extends Transaction
     {
         parent::__construct($sWebsiteKey, $sPemPath);
 
-        $this->setService(Transaction::SERVICE_IDEAL);
+        $this->setService(ServiceHelper::SERVICE_IDEAL);
     }
 
     /**
@@ -62,43 +53,43 @@ class IdealTransaction extends Transaction
         return [
             [
                 'name' => 'ABN AMRO',
-                'code' => self::BANK_ABN_AMRO,
+                'code' => ServiceHelper::IDEAL_ABN_AMRO,
             ],
             [
                 'name' => 'ASN Bank',
-                'code' => self::BANK_ASN_BANK,
+                'code' => ServiceHelper::IDEAL_ASN_BANK,
             ],
             [
                 'name' => 'ING',
-                'code' => self::BANK_ING,
+                'code' => ServiceHelper::IDEAL_ING,
             ],
             [
                 'name' => 'Rabobank',
-                'code' => self::BANK_RABOBANK,
+                'code' => ServiceHelper::IDEAL_RABOBANK,
             ],
             [
                 'name' => 'SNS Bank',
-                'code' => self::BANK_SNS_BANK,
+                'code' => ServiceHelper::IDEAL_SNS_BANK,
             ],
             [
                 'name' => 'RegioBank',
-                'code' => self::BANK_REGIO_BANK,
+                'code' => ServiceHelper::IDEAL_REGIO_BANK,
             ],
             [
                 'name' => 'Triodos Bank',
-                'code' => self::BANK_TRIODOS_BANK,
+                'code' => ServiceHelper::IDEAL_TRIODOS_BANK,
             ],
             [
                 'name' => 'Van Lanschot',
-                'code' => self::BANK_VAN_LANSCHOT,
+                'code' => ServiceHelper::IDEAL_VAN_LANSCHOT,
             ],
             [
                 'name' => 'Knab bank',
-                'code' => self::BANK_KNAB_BANK,
+                'code' => ServiceHelper::IDEAL_KNAB_BANK,
             ],
             [
                 'name' => 'Bunq',
-                'code' => self::BANK_BUNQ,
+                'code' => ServiceHelper::IDEAL_BUNQ,
             ],
         ];
     }
