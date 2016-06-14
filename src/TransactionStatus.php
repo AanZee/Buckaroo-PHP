@@ -20,7 +20,11 @@ class TransactionStatus extends BuckarooBaseSoap
     {
         $this->setWebsiteKey($sWebsiteKey);
         $this->setPemPath($sPemPath);
-        $this->addSoapOption('classmap', []);
+        $this->addSoapOption('classmap', [
+            'Body'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionStatus\\Body',
+            'Transaction'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
+            'InvalidTransaction' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\InvalidTransactionError',
+        ]);
 
         $this->oRequestBody = new TransactionStatusBody();
     }
@@ -28,7 +32,7 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Add a transaction to the request by transaction key
      *
-     * @param string $sTransactionKey       The transaction key
+     * @param string $sTransactionKey The transaction key
      *
      * @return $this
      */
@@ -43,7 +47,7 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Add a transaction to the request by invoice number
      *
-     * @param string $sInvoice              The invoice number
+     * @param string $sInvoice The invoice number
      *
      * @return $this
      */
@@ -58,7 +62,7 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Add a transaction to the request by custom parameter
      *
-     * @param string  $sName     The name of the custom parameter
+     * @param string $sName  The name of the custom parameter
      * @param mixed  $mValue The value of the custom parameter
      *
      * @return $this
@@ -75,7 +79,7 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Add a transaction to the request by additional parameter
      *
-     * @param string  $sName     The name of the additional parameter
+     * @param string $sName  The name of the additional parameter
      * @param mixed  $mValue The value of the additional parameter
      *
      * @return $this
