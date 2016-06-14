@@ -180,6 +180,13 @@ class Body implements BodyInterface
     protected $PaymentKey;
 
     /**
+     * Is the transaction cancelable?
+     *
+     * @var boolean
+     */
+    protected $IsCancelable;
+
+    /**
      * Get the transaction key
      *
      * @return string
@@ -305,6 +312,16 @@ class Body implements BodyInterface
     }
 
     /**
+     * Get the required action type
+     *
+     * @return string
+     */
+    public function getRequiredActionType()
+    {
+        return $this->getRequiredActionObject()->getType();
+    }
+
+    /**
      * Does the consumer has to be redirected?
      *
      * @return bool
@@ -382,5 +399,15 @@ class Body implements BodyInterface
     public function isIdealRequest()
     {
         return $this->getServiceCode() === Transaction::SERVICE_IDEAL;
+    }
+
+    /**
+     * Is the transaction cancelable?
+     *
+     * @return bool
+     */
+    public function isCancelable()
+    {
+        return $this->IsCancelable;
     }
 }
