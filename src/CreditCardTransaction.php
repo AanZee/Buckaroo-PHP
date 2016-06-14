@@ -1,5 +1,7 @@
 <?php namespace SeBuDesign\Buckaroo;
 
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
+
 class CreditCardTransaction extends Transaction
 {
     /**
@@ -38,39 +40,39 @@ class CreditCardTransaction extends Transaction
         return [
             [
                 'name' => 'MasterCard',
-                'code' => Transaction::SERVICE_MASTERCARD,
+                'code' => ServiceHelper::SERVICE_MASTERCARD,
             ],
             [
                 'name' => 'Visa',
-                'code' => Transaction::SERVICE_VISA,
+                'code' => ServiceHelper::SERVICE_VISA,
             ],
             [
                 'name' => 'American Express',
-                'code' => Transaction::SERVICE_AMERICAN_EXPRESS,
+                'code' => ServiceHelper::SERVICE_AMERICAN_EXPRESS,
             ],
             [
                 'name' => 'Maestro',
-                'code' => Transaction::SERVICE_MAESTRO,
+                'code' => ServiceHelper::SERVICE_MAESTRO,
             ],
             [
                 'name' => 'VPay',
-                'code' => Transaction::SERVICE_VPAY,
+                'code' => ServiceHelper::SERVICE_VPAY,
             ],
             [
                 'name' => 'Visa Electron',
-                'code' => Transaction::SERVICE_VISA_ELECTRON,
+                'code' => ServiceHelper::SERVICE_VISA_ELECTRON,
             ],
             [
                 'name' => 'Carte Bleue',
-                'code' => Transaction::SERVICE_CARTE_BLEUE,
+                'code' => ServiceHelper::SERVICE_CARTE_BLEUE,
             ],
             [
                 'name' => 'Carte Bancaire',
-                'code' => Transaction::SERVICE_CARTE_BANCAIRE,
+                'code' => ServiceHelper::SERVICE_CARTE_BANCAIRE,
             ],
             [
                 'name' => 'Dankort',
-                'code' => Transaction::SERVICE_DANKORT,
+                'code' => ServiceHelper::SERVICE_DANKORT,
             ],
         ];
     }

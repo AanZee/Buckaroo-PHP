@@ -3,6 +3,7 @@
 include __DIR__ . "/../vendor/autoload.php";
 use SeBuDesign\Buckaroo\Transaction;
 use SeBuDesign\Buckaroo\PayPalTransaction;
+use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 
 /**
  *
@@ -42,7 +43,7 @@ $paypalResponse = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
     ->setInvoice('TEST_INVOICE')
-    ->setService(Transaction::SERVICE_PAYPAL)
+    ->setService(ServiceHelper::SERVICE_PAYPAL)
 
     // Optional; Email of the client so paypal will pre-fill the email address
     ->addServiceParameter('BuyerEmail', 'email@ofclient.com')

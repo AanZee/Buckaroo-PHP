@@ -1,7 +1,6 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction;
 
-use SeBuDesign\Buckaroo\Transaction;
-
+use SeBuDesign\Buckaroo\Helpers\StatusCodesHelper;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessageTrait;
@@ -392,16 +391,6 @@ class Body implements BodyInterface
     }
 
     /**
-     * Does the response has a required action?
-     *
-     * @return bool
-     */
-    public function isIdealRequest()
-    {
-        return $this->getServiceCode() === Transaction::SERVICE_IDEAL;
-    }
-
-    /**
      * Is the transaction cancelable?
      *
      * @return bool
@@ -409,5 +398,75 @@ class Body implements BodyInterface
     public function isCancelable()
     {
         return $this->IsCancelable;
+    }
+
+    /**
+     * Is the current status successful ?
+     *
+     * @return bool
+     */
+    public function isSuccessful()
+    {
+        return StatusCodesHelper::isSuccessful($this->getStatusCode());
+    }
+
+    /**
+     * Is the current status pending ?
+     *
+     * @return bool
+     */
+    public function isPending()
+    {
+        return StatusCodesHelper::isPending($this->getStatusCode());
+    }
+
+    /**
+     * Is the current status failed ?
+     *
+     * @return bool
+     */
+    public function isFailed()
+    {
+        return StatusCodesHelper::isFailed($this->getStatusCode());
+    }
+
+    /**
+     * Is the current status cancelled ?
+     *
+     * @return bool
+     */
+    public function isCancelled()
+    {
+        return StatusCodesHelper::isCancelled($this->getStatusCode());
+    }
+
+    /**
+     * Is the current status rejected ?
+     *
+     * @return bool
+     */
+    public function isRejected()
+    {
+        return StatusCodesHelper::isRejected($this->getStatusCode());
+    }
+
+    /**
+     * Is the current status permanent ?
+     *
+     * @return bool
+     */
+    public function hasPermanentStatus()
+    {
+        return StatusCodesHelper::isPermanentStatus($this->getStatusCode());
+    }
+
+    /**
+     * Is the current status temporary ?
+     *
+     * @return bool
+     */
+    public function hasTemporaryStatus()
+    {
+        return StatusCodesHelper::isTemporaryStatus($this->getStatusCode());
     }
 }
