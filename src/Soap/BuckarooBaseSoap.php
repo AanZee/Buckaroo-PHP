@@ -196,11 +196,21 @@ class BuckarooBaseSoap
 
         $this->addControlBlockHeaders();
 
-        /** @var BodyInterface $oResult */
-        $oResult = $this->oSoapClient->{$sCall}($this->oRequestBody);
-        
-        if ($oResult->hasErrors()) {
-            throw new BuckarooSoapException("There are errors in your SOAP response, {$this->oSoapClient->__getLastResponse()}. The request XML was {$this->oSoapClient->__getLastRequest()}");
+        try {
+            /** @var BodyInterface $oResult */
+            $oResult = $this->oSoapClient->{$sCall}($this->oRequestBody);
+
+            if ($oResult->hasErrors()) {
+                throw new BuckarooSoapException("There are errors in your SOAP response, {$this->oSoapClient->__getLastResponse()}. The request XML was {$this->oSoapClient->__getLastRequest()}");
+            }
+        } catch (\SoapFault $oException) {
+            $oSoapException = new BuckarooSoapException($oException->getMessage(), $oException->getCode());
+            $oSoapException->setRequestHeaders($this->oSoapClient->__getLastRequestHeaders());
+            $oSoapException->setRequestXml($this->oSoapClient->__getLastRequest());
+            $oSoapException->setResponseHeaders($this->oSoapClient->__getLastResponseHeaders());
+            $oSoapException->setResponseXml($this->oSoapClient->__getLastResponse());
+            
+            throw $oSoapException;
         }
 
         return $oResult;
