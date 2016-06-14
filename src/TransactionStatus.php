@@ -23,8 +23,25 @@ class TransactionStatus extends BuckarooBaseSoap
         $this->setPemPath($sPemPath);
         $this->addSoapOption('classmap', [
             'Body'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionStatus\\Body',
-            'Transaction'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
             'InvalidTransaction' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\InvalidTransactionError',
+            'Transaction'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
+            'Status'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\Status',
+            'StatusCode'           => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',
+            'StatusSubCode'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',
+            'ConsumerMessage'      => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\ConsumerMessage\\ConsumerMessage',
+            'Services'             => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Service\\Services',
+            'Service'              => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Service\\Service',
+            'ResponseParameter'    => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\Parameter',
+            'RequiredAction'       => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\RequiredAction',
+            'CustomParameters'     => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\CustomParameters',
+            'CustomParameter'      => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\Parameter',
+            'AdditionalParameters' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\AdditionalParameters',
+            'AdditionalParameter'  => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Parameter\\Parameter',
+            'RequestErrors'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\RequestErrors',
+            'ParameterError'       => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
+            'CustomParameterError' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
+            'ServiceError'         => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
+            'ActionError'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
         ]);
 
         $this->oRequestBody = new TransactionStatusBody();
