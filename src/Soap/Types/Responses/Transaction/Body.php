@@ -312,6 +312,16 @@ class Body implements BodyInterface
     }
 
     /**
+     * Get the required action type
+     *
+     * @return string
+     */
+    public function getRequiredActionType()
+    {
+        return $this->getRequiredActionObject()->getType();
+    }
+
+    /**
      * Does the consumer has to be redirected?
      *
      * @return bool
