@@ -1,6 +1,6 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionRequestSpecification;
 
-class TransactionRequestSpecificationBody
+class Body
 {
     /**
      * The requested service

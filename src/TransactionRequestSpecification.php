@@ -3,7 +3,7 @@
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionRequestSpecification\LatestVersionOnlyBody;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionRequestSpecification\RequestedService;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionRequestSpecification\TransactionRequestSpecificationBody;
+use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionRequestSpecification\Body;
 
 class TransactionRequestSpecification extends BuckarooBaseSoap
 {
@@ -21,7 +21,7 @@ class TransactionRequestSpecification extends BuckarooBaseSoap
             'Body'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\Body',
         ]);
 
-        $this->oRequestBody = new TransactionRequestSpecificationBody();
+        $this->oRequestBody = new Body();
         $this->aOtherRequestBodies = [
             new LatestVersionOnlyBody(),
         ];
