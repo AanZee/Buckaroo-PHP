@@ -5,7 +5,6 @@ use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
 
 class Body implements BodyInterface
 {
-
     /**
      * Does the response have errors
      *

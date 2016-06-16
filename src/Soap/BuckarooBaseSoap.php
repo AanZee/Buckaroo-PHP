@@ -66,6 +66,13 @@ class BuckarooBaseSoap
     protected $oRequestBody;
 
     /**
+     * If some variables are outside the default request body, use this to add it to the request
+     *
+     * @var array
+     */
+    protected $aOtherRequestBodies;
+
+    /**
      * The SOAP options for the Buckaroo SOAP client
      *
      * @var array
@@ -201,7 +208,12 @@ class BuckarooBaseSoap
 
         try {
             /** @var BodyInterface $oResult */
-            $oResult = $this->oSoapClient->{$sCall}($this->oRequestBody);
+            if (is_array($this->aOtherRequestBodies)) {
+                $this->aOtherRequestBodies[] = $this->oRequestBody;
+                $oResult = call_user_func_array([$this->oSoapClient, $sCall], $this->aOtherRequestBodies);
+            } else {
+                $oResult = $this->oSoapClient->{$sCall}($this->oRequestBody);
+            }
 
             if ($oResult->hasErrors()) {
                 throw new BuckarooSoapException("There are errors in your SOAP response, {$this->oSoapClient->__getLastResponse()}. The request XML was {$this->oSoapClient->__getLastRequest()}");
