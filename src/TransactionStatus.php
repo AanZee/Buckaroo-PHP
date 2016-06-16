@@ -6,7 +6,6 @@ use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\AdditionalParameter;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\CustomParameter;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusBody;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusTransaction;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\TransactionStatus\Body;
 
 class TransactionStatus extends BuckarooBaseSoap
 {
@@ -113,7 +112,7 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Add a transaction object to the request
      *
-     * @param \SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusTransaction $oTransaction
+     * @param \SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusTransaction $oTransaction The transaction to get
      *
      * @return $this
      */
@@ -127,7 +126,7 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Perform the actual SOAP call
      *
-     * @return Body
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\TransactionStatus\Body
      *
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException

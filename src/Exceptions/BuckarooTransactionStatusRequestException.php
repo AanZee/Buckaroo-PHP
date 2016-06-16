@@ -1,10 +1,5 @@
-<?php
-
-namespace SeBuDesign\Buckaroo\Exceptions;
+<?php namespace SeBuDesign\Buckaroo\Exceptions;
 
 use Exception;
 
-class BuckarooTransactionStatusRequestException extends Exception
-{
-    
-}
+class BuckarooTransactionStatusRequestException extends Exception {}

@@ -1,14 +1,10 @@
-<?php
-
-namespace SeBuDesign\Buckaroo;
+<?php namespace SeBuDesign\Buckaroo;
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException;
 use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Transaction as BuckarooSoapTransaction;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Common as BuckarooSoapCommon;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Service;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body;
 
 class Transaction extends BuckarooBaseSoap
 {
@@ -396,7 +392,7 @@ class Transaction extends BuckarooBaseSoap
     /**
      * Perform the actual call
      *
-     * @return Body
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body
      *
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException

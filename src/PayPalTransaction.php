@@ -37,7 +37,7 @@ class PayPalTransaction extends Transaction
      *
      * @return $this
      *
-     * @throws BuckarooArgumentException
+     * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      */
     public function setPageStylesheetUrl($sPageStylesheetUrl)
     {
@@ -55,7 +55,7 @@ class PayPalTransaction extends Transaction
      *
      * @return $this
      *
-     * @throws BuckarooArgumentException
+     * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      */
     public function setBillingAgreement($sBillingAgreement)
     {

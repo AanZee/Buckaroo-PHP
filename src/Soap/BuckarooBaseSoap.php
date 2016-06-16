@@ -1,9 +1,7 @@
-<?php
-
-namespace SeBuDesign\Buckaroo\Soap;
+<?php namespace SeBuDesign\Buckaroo\Soap;
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException;
-use LinkORB\Buckaroo\SoapClientWSSEC as BuckarooSoapClient;
+use LinkORB\Buckaroo\SoapClientWSSEC;
 use SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException;
 use SeBuDesign\Buckaroo\Soap\Types\Requests as BuckarooSoapTypes;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
@@ -49,7 +47,7 @@ class BuckarooBaseSoap
     /**
      * The Buckaroo SOAP client
      *
-     * @var BuckarooSoapClient
+     * @var \LinkORB\Buckaroo\SoapClientWSSEC
      */
     protected $oSoapClient;
 
@@ -196,7 +194,7 @@ class BuckarooBaseSoap
             throw new BuckarooArgumentException("Missing Buckaroo website key");
         }
 
-        $this->oSoapClient = new BuckarooSoapClient("{$this->sSoapEndPoint}?wsdl", $this->aSoapOptions);
+        $this->oSoapClient = new SoapClientWSSEC("{$this->sSoapEndPoint}?wsdl", $this->aSoapOptions);
         $this->oSoapClient->loadPem($this->sPemPath);
 
         $this->addControlBlockHeaders();
