@@ -338,7 +338,7 @@ class Transaction extends BuckarooBaseSoap
     public function addServiceParameter($sName, $mValue)
     {
         $this->oRequestBody->Services->Service->RequestParameter[]
-            = new BuckarooSoapCommon\RequestParameter($sName, $mValue);
+            = new BuckarooSoapCommon\Parameter($sName, $mValue);
 
         return $this;
     }
@@ -368,7 +368,7 @@ class Transaction extends BuckarooBaseSoap
     public function addCustomParameter($sName, $mValue)
     {
         $this->oRequestBody->CustomParameters->CustomParameter[]
-            = new BuckarooSoapCommon\CustomParameter($sName, $mValue);
+            = new BuckarooSoapCommon\Parameter($sName, $mValue);
 
         return $this;
     }
@@ -384,7 +384,7 @@ class Transaction extends BuckarooBaseSoap
     public function addAdditionalParameter($sName, $mValue)
     {
         $this->oRequestBody->AdditionalParameters->AdditionalParameter[]
-            = new BuckarooSoapCommon\AdditionalParameter($sName, $mValue);
+            = new BuckarooSoapCommon\Parameter($sName, $mValue);
 
         return $this;
     }

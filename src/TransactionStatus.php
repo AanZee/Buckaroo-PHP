@@ -2,8 +2,7 @@
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionStatusRequestException;
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\AdditionalParameter;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\CustomParameter;
+use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\Parameter;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusBody;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusTransaction;
 
@@ -85,7 +84,7 @@ class TransactionStatus extends BuckarooBaseSoap
      */
     public function addTransactionByCustomParameter($sName, $mValue)
     {
-        $oCustomParameter = new CustomParameter($sName, $mValue);
+        $oCustomParameter = new Parameter($sName, $mValue);
         $oTransaction = new TransactionStatusTransaction();
         $oTransaction->CustomParameter = $oCustomParameter;
 
@@ -102,7 +101,7 @@ class TransactionStatus extends BuckarooBaseSoap
      */
     public function addTransactionByAdditionalParameter($sName, $mValue)
     {
-        $oAdditionalParameter = new AdditionalParameter($sName, $mValue);
+        $oAdditionalParameter = new Parameter($sName, $mValue);
         $oTransaction = new TransactionStatusTransaction();
         $oTransaction->AdditionalParameter = $oAdditionalParameter;
 
