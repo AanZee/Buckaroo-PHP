@@ -66,3 +66,5 @@ $creditCardResponse = $oTransaction
 
     ->perform();
 
+var_dump($creditCardResponse, $creditCardResponse2);
+

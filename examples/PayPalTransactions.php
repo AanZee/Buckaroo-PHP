@@ -21,7 +21,7 @@ $paypalResponse2 = $oTransaction
     // Optional; Email of the client so paypal will pre-fill the email address
     ->setCustomerEmail( 'email@ofclient.com')
     // Optional; A custom page style for paypal
-    ->setPageStylesheetUrl('http://link.to.page/style.css (max 30 characters)')
+    ->setPageStylesheetUrl('http://link.to/css (30 chars)')
     // Optional; A custom billing agreement
     ->setBillingAgreement('A description used for a billing agreement. (max 127 characters)')
     // Optional; A product name
@@ -48,7 +48,7 @@ $paypalResponse = $oTransaction
     // Optional; Email of the client so paypal will pre-fill the email address
     ->addServiceParameter('BuyerEmail', 'email@ofclient.com')
     // Optional; A custom page style for paypal
-    ->addServiceParameter('PageStyle', 'http://link.to.page/style.css (max 30 characters)')
+    ->addServiceParameter('PageStyle', 'http://link.to/css (30 chars)')
     // Optional; A custom billing agreement
     ->addServiceParameter('BillingAgreementDescription', 'A description used for a billing agreement. (max 127 characters)')
     // Optional; A product name
@@ -58,3 +58,4 @@ $paypalResponse = $oTransaction
 
     ->perform();
 
+var_dump($paypalResponse2, $paypalResponse);
