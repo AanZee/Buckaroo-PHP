@@ -39,7 +39,7 @@ class Transaction extends BuckarooBaseSoap
             'ActionError'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
         ]);
 
-        $this->oRequestBody = new BuckarooSoapTransaction\TransactionBody();
+        $this->oRequestBody = new BuckarooSoapTransaction\Body();
         $this->oRequestBody->Currency = 'EUR';
         $this->oRequestBody->StartRecurrent = false;
     }
@@ -252,7 +252,7 @@ class Transaction extends BuckarooBaseSoap
     public function setService($sService, $iServiceVersion = 2, $sAction = 'Pay')
     {
         $this->oRequestBody->Services->Service
-            = new BuckarooSoapTransaction\TransactionService($sService, $sAction, $iServiceVersion);
+            = new BuckarooSoapTransaction\Service($sService, $sAction, $iServiceVersion);
 
         return $this;
     }
