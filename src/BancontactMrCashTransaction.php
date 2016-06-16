@@ -5,7 +5,7 @@ use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 class BancontactMrCashTransaction extends Transaction
 {
     /**
-     * PayPalTransaction constructor.
+     * BancontactMrCashTransaction constructor.
      *
      * @param string $sWebsiteKey The Buckaroo website key
      * @param string $sPemPath    The path to the PEM file
