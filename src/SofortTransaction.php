@@ -77,4 +77,18 @@ class PayPalTransaction extends Transaction
     {
         return $this->addServiceParameter('ProductName', $sProductName);
     }
+
+    /**
+     * Set the amount
+     *
+     * @param float $fAmount The amount a person has to pay
+     *
+     * @return $this
+     */
+    public function setAmount($fAmount)
+    {
+        $this->setAmountDebit($fAmount);
+
+        return $this;
+    }
 }

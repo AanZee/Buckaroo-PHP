@@ -30,20 +30,6 @@ class IdealTransaction extends Transaction
     }
 
     /**
-     * Set the amount
-     *
-     * @param float $fAmount The amount a person has to pay
-     *
-     * @return $this
-     */
-    public function setAmount($fAmount)
-    {
-        $this->setAmountDebit($fAmount);
-
-        return $this;
-    }
-
-    /**
      * Get the static iDeal banks
      *
      * @return array
