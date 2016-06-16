@@ -4,8 +4,8 @@ class Services
 {
     /**
      * The services
-     * 
-     * @var Service[]
+     *
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Service[]
      */
     protected $Service;
 
@@ -32,7 +32,7 @@ class Services
     {
         if ($this->Service instanceof Service) {
             $this->Service = [
-                $this->Service
+                $this->Service,
             ];
         }
 

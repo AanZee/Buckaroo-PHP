@@ -39,7 +39,7 @@ trait ParametersTrait
      *
      * @param string $sName The name of the parameter
      *
-     * @return bool
+     * @return bool|\SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter
      */
     public function getParameter($sName)
     {

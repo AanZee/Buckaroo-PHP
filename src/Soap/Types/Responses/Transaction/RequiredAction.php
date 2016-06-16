@@ -9,7 +9,7 @@ class RequiredAction
 
     /**
      * The redirect url
-     * 
+     *
      * @var string
      */
     protected $RedirectURL;

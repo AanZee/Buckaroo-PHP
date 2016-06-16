@@ -60,6 +60,11 @@ class BuckarooBaseSoap
      */
     protected $sWebsiteKey;
 
+    /**
+     * The request body
+     *
+     * @var object
+     */
     protected $oRequestBody;
 
     /**
@@ -68,7 +73,7 @@ class BuckarooBaseSoap
      * @var array
      */
     protected $aSoapOptions = [
-        'trace'    => 1,
+        'trace' => 1,
     ];
 
     /**
@@ -218,6 +223,8 @@ class BuckarooBaseSoap
 
     /**
      * This method creates the SOAP client headers which are needed at every request for security purposes
+     *
+     * @return void
      */
     protected function addControlBlockHeaders()
     {
@@ -231,7 +238,7 @@ class BuckarooBaseSoap
 
         // Add the headers to the SOAP client
         $soapHeaders[] = new SOAPHeader(
-            'https://checkout.buckaroo.nl/PaymentEngine/', 
+            'https://checkout.buckaroo.nl/PaymentEngine/',
             'MessageControlBlock',
             $oMessageControlBlock
         );

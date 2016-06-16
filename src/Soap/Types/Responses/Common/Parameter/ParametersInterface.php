@@ -5,7 +5,7 @@ interface ParametersInterface
     /**
      * Get all the parameters
      *
-     * @return Parameter[]
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter[]
      */
     public function getParameters();
 
@@ -23,7 +23,7 @@ interface ParametersInterface
      *
      * @param string $sName The name of the parameter
      *
-     * @return mixed
+     * @return bool|\SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter
      */
     public function getParameter($sName);
 }

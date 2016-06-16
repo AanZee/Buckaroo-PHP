@@ -19,9 +19,9 @@ trait ServicesTrait
          */
 
         $oServices = new Services();
-        
+
         $oServices->setService($this->Services->Service);
-        
+
         return $oServices;
     }
 

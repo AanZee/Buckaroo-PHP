@@ -7,7 +7,7 @@ class CustomParameters implements ParametersInterface
     /**
      * The custom parameters
      *
-     * @var Parameter[]
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter[]
      */
     protected $CustomParameter;
 
@@ -20,7 +20,7 @@ class CustomParameters implements ParametersInterface
     {
         if ($this->CustomParameter instanceof Parameter) {
             $this->CustomParameter = [
-                $this->CustomParameter
+                $this->CustomParameter,
             ];
         }
 

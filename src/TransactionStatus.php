@@ -1,6 +1,5 @@
 <?php namespace SeBuDesign\Buckaroo;
 
-use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException;
 use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionStatusRequestException;
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\AdditionalParameter;
@@ -22,9 +21,9 @@ class TransactionStatus extends BuckarooBaseSoap
         $this->setWebsiteKey($sWebsiteKey);
         $this->setPemPath($sPemPath);
         $this->addSoapOption('classmap', [
-            'Body'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionStatus\\Body',
-            'InvalidTransaction' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\InvalidTransactionError',
-            'Transaction'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
+            'Body'                 => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionStatus\\Body',
+            'InvalidTransaction'   => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\InvalidTransactionError',
+            'Transaction'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
             'Status'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\Status',
             'StatusCode'           => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',
             'StatusSubCode'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',

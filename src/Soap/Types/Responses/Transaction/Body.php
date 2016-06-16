@@ -2,21 +2,14 @@
 
 use SeBuDesign\Buckaroo\Helpers\StatusCodesHelper;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessageTrait;
-
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\RequestErrors;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\AdditionalParameters;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\CustomParameters;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Services;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\ServicesTrait;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\Status;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\StatusTrait;
 
 class Body implements BodyInterface
 {
     use ConsumerMessageTrait, StatusTrait, ServicesTrait;
-    
+
     /**
      * The transaction key
      *
@@ -48,7 +41,7 @@ class Body implements BodyInterface
     /**
      * The status code object
      *
-     * @var Status
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status\Status
      */
     protected $Status;
 
@@ -104,7 +97,7 @@ class Body implements BodyInterface
     /**
      * The consumer message object
      *
-     * @var ConsumerMessage
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\ConsumerMessage\ConsumerMessage
      */
     protected $ConsumerMessage;
 
@@ -146,28 +139,28 @@ class Body implements BodyInterface
     /**
      * The response services
      *
-     * @var Services
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Services
      */
     protected $Services;
 
     /**
      * The custom parameters
      *
-     * @var CustomParameters
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\CustomParameters
      */
     protected $CustomParameters;
 
     /**
      * The additional parameters
      *
-     * @var AdditionalParameters
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\AdditionalParameters
      */
     protected $AdditionalParameters;
 
     /**
      * The request errors
      *
-     * @var RequestErrors
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\RequestErrors
      */
     protected $RequestErrors;
 
