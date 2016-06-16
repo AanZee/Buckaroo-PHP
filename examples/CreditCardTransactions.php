@@ -15,8 +15,8 @@ use SeBuDesign\Buckaroo\CreditCardTransaction;
 $staticCreditCardTypes = CreditCardTransaction::getStaticCreditCardTypes();
 
 // Specific simplified credit card transaction
-$oCreditCardTransaction = new CreditCardTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$creditCardResponse2 = $oCreditCardTransaction
+$oTransaction = new CreditCardTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$creditCardResponse1 = $oTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setInvoice('TEST_INVOICE')
@@ -45,7 +45,7 @@ $creditCardResponse2 = $oCreditCardTransaction
 
 // Credit card payment
 $oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$creditCardResponse = $oTransaction
+$creditCardResponse2 = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
     ->setInvoice('TEST_INVOICE')
@@ -66,5 +66,5 @@ $creditCardResponse = $oTransaction
 
     ->perform();
 
-var_dump($creditCardResponse, $creditCardResponse2);
+var_dump($creditCardResponse1, $creditCardResponse2);
 

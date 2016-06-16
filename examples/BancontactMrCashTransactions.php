@@ -11,8 +11,8 @@ use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
  *
  */
 
-$oIdealTransaction = new BancontactMrCashTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$response1 = $oIdealTransaction
+$oTransaction = new BancontactMrCashTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$response1 = $oTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setInvoice('TEST_INVOICE')

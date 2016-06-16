@@ -13,7 +13,7 @@ use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 
 // With service parameters
 $oTransaction = new PayPalTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$paypalResponse2 = $oTransaction
+$paypalResponse1 = $oTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setInvoice('TEST_INVOICE')
@@ -39,7 +39,7 @@ $paypalResponse2 = $oTransaction
 
 // With service parameters
 $oTransaction = new Transaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$paypalResponse = $oTransaction
+$paypalResponse2 = $oTransaction
     ->putInTestMode()
     ->setAmountDebit(1.23)
     ->setInvoice('TEST_INVOICE')
@@ -58,4 +58,4 @@ $paypalResponse = $oTransaction
 
     ->perform();
 
-var_dump($paypalResponse2, $paypalResponse);
+var_dump($paypalResponse1, $paypalResponse2);
