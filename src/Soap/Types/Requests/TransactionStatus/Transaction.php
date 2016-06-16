@@ -1,6 +1,6 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus;
 
-class TransactionStatusTransaction
+class Transaction
 {
     /**
      * The transaction key
