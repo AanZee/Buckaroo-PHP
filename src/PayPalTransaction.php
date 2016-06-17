@@ -37,7 +37,7 @@ class PayPalTransaction extends Transaction
      *
      * @return $this
      *
-     * @throws BuckarooArgumentException
+     * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      */
     public function setPageStylesheetUrl($sPageStylesheetUrl)
     {
@@ -55,7 +55,7 @@ class PayPalTransaction extends Transaction
      *
      * @return $this
      *
-     * @throws BuckarooArgumentException
+     * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      */
     public function setBillingAgreement($sBillingAgreement)
     {
@@ -76,19 +76,5 @@ class PayPalTransaction extends Transaction
     public function setProductName($sProductName)
     {
         return $this->addServiceParameter('ProductName', $sProductName);
-    }
-
-    /**
-     * Set the amount
-     *
-     * @param float $fAmount The amount a person has to pay
-     *
-     * @return $this
-     */
-    public function setAmount($fAmount)
-    {
-        $this->setAmountDebit($fAmount);
-
-        return $this;
     }
 }

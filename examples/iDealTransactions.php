@@ -11,8 +11,8 @@ use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
  *
  */
 
-$oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$iDealResponse2 = $oIdealTransaction
+$oTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$iDealResponse2 = $oTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setIdealIssuer(ServiceHelper::IDEAL_BUNQ)

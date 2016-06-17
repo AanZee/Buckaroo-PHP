@@ -10,28 +10,28 @@ class RequestErrors
     /**
      * Optional; Service error
      *
-     * @var Error
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\Error
      */
     protected $ServiceError;
 
     /**
      * Optional; Action error
      *
-     * @var Error
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\Error
      */
     protected $ActionError;
 
     /**
      * Optional; Parameter error
      *
-     * @var Error
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\Error
      */
     protected $ParameterError;
 
     /**
      * Optional; Custom parameter error
      *
-     * @var Error
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\Error
      */
     protected $CustomParameterError;
 
@@ -52,7 +52,7 @@ class RequestErrors
      *
      * @param string $sErrorType One of the above error types
      *
-     * @return Error
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\Error
      */
     public function getError($sErrorType)
     {

@@ -19,7 +19,7 @@ class InvalidTransactionError
     /**
      * The error message
      *
-     * @var Error
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\Error
      */
     protected $ErrorMessage;
 
@@ -46,7 +46,7 @@ class InvalidTransactionError
     /**
      * Get the error message
      *
-     * @return Error
+     * @return \\SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Error\Error
      */
     public function getErrorMessage()
     {

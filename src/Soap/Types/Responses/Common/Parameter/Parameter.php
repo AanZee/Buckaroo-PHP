@@ -18,7 +18,7 @@ class Parameter
 
     /**
      * Get the name of the parameter
-     * 
+     *
      * @return string
      */
     public function getName()
@@ -28,7 +28,7 @@ class Parameter
 
     /**
      * Get the value of the parameter
-     * 
+     *
      * @return mixed
      */
     public function getValue()

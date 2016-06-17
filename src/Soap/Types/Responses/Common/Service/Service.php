@@ -18,7 +18,7 @@ class Service implements ParametersInterface
     /**
      * An array of response parameters
      *
-     * @var Parameter[]
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter[]
      */
     protected $ResponseParameter;
 
@@ -41,10 +41,10 @@ class Service implements ParametersInterface
     {
         if ($this->ResponseParameter instanceof Parameter) {
             $this->ResponseParameter = [
-                $this->ResponseParameter
+                $this->ResponseParameter,
             ];
         }
-        
+
         return $this->ResponseParameter;
     }
 }

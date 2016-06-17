@@ -28,6 +28,7 @@ You could check the [examples](examples) folder for the usage.
 - Add TransactionStatus call
 - Add TransactionRequestSpecification call
 - Add Refund call
+- Add PayRemainder call
 - Add InvoiceInfo call
 - Add DataRequest call
 - Add DataRequestSpecification call

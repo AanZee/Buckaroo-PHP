@@ -7,7 +7,7 @@ class Body implements BodyInterface
 {
     /**
      * All of the transactions requested
-     * 
+     *
      * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body[]
      */
     protected $Transaction;
@@ -26,10 +26,9 @@ class Body implements BodyInterface
      */
     public function getTransactions()
     {
-        if ($this->Transaction instanceof \SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body)
-        {
+        if ($this->Transaction instanceof \SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body) {
             $this->Transaction = [
-                $this->Transaction
+                $this->Transaction,
             ];
         }
 
@@ -66,7 +65,7 @@ class Body implements BodyInterface
     {
         if ($this->InvalidTransaction instanceof InvalidTransactionError) {
             $this->InvalidTransaction = [
-                $this->InvalidTransaction
+                $this->InvalidTransaction,
             ];
         }
 
@@ -94,10 +93,8 @@ class Body implements BodyInterface
     {
         $bReturn = false;
 
-        if ($this->hasInvalidTransactions())
-        {
-            foreach ($this->getInvalidTransactions() as $oInvalidTransaction)
-            {
+        if ($this->hasInvalidTransactions()) {
+            foreach ($this->getInvalidTransactions() as $oInvalidTransaction) {
                 if ($oInvalidTransaction->getTransactionKey() === $sTransactionKey) {
                     $bReturn = true;
                     break;
@@ -119,10 +116,8 @@ class Body implements BodyInterface
     {
         $bReturn = false;
 
-        if ($this->hasInvalidTransactions())
-        {
-            foreach ($this->getInvalidTransactions() as $oInvalidTransaction)
-            {
+        if ($this->hasInvalidTransactions()) {
+            foreach ($this->getInvalidTransactions() as $oInvalidTransaction) {
                 if ($oInvalidTransaction->getInvoiceNumber() === $sInvoiceNumber) {
                     $bReturn = true;
                     break;
@@ -136,8 +131,9 @@ class Body implements BodyInterface
     /**
      * Does the response have errors
      *
-     * We don't check the errors here because we want to be able to parse the result if only one transaction key does not exists
-     * 
+     * We don't check the errors here because we want to be able to parse the result if only one transaction key does
+     * not exists
+     *
      * @return bool
      */
     public function hasErrors()
