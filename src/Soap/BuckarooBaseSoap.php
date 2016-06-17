@@ -1,9 +1,7 @@
-<?php
-
-namespace SeBuDesign\Buckaroo\Soap;
+<?php namespace SeBuDesign\Buckaroo\Soap;
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException;
-use LinkORB\Buckaroo\SoapClientWSSEC as BuckarooSoapClient;
+use LinkORB\Buckaroo\SoapClientWSSEC;
 use SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException;
 use SeBuDesign\Buckaroo\Soap\Types\Requests as BuckarooSoapTypes;
 use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface;
@@ -49,7 +47,7 @@ class BuckarooBaseSoap
     /**
      * The Buckaroo SOAP client
      *
-     * @var BuckarooSoapClient
+     * @var \LinkORB\Buckaroo\SoapClientWSSEC
      */
     protected $oSoapClient;
 
@@ -60,7 +58,19 @@ class BuckarooBaseSoap
      */
     protected $sWebsiteKey;
 
+    /**
+     * The request body
+     *
+     * @var object
+     */
     protected $oRequestBody;
+
+    /**
+     * If some variables are outside the default request body, use this to add it to the request
+     *
+     * @var array
+     */
+    protected $aOtherRequestBodies;
 
     /**
      * The SOAP options for the Buckaroo SOAP client
@@ -68,7 +78,7 @@ class BuckarooBaseSoap
      * @var array
      */
     protected $aSoapOptions = [
-        'trace'    => 1,
+        'trace' => 1,
     ];
 
     /**
@@ -191,14 +201,19 @@ class BuckarooBaseSoap
             throw new BuckarooArgumentException("Missing Buckaroo website key");
         }
 
-        $this->oSoapClient = new BuckarooSoapClient("{$this->sSoapEndPoint}?wsdl", $this->aSoapOptions);
+        $this->oSoapClient = new SoapClientWSSEC("{$this->sSoapEndPoint}?wsdl", $this->aSoapOptions);
         $this->oSoapClient->loadPem($this->sPemPath);
 
         $this->addControlBlockHeaders();
 
         try {
             /** @var BodyInterface $oResult */
-            $oResult = $this->oSoapClient->{$sCall}($this->oRequestBody);
+            if (is_array($this->aOtherRequestBodies)) {
+                $this->aOtherRequestBodies[] = $this->oRequestBody;
+                $oResult = call_user_func_array([$this->oSoapClient, $sCall], $this->aOtherRequestBodies);
+            } else {
+                $oResult = $this->oSoapClient->{$sCall}($this->oRequestBody);
+            }
 
             if ($oResult->hasErrors()) {
                 throw new BuckarooSoapException("There are errors in your SOAP response, {$this->oSoapClient->__getLastResponse()}. The request XML was {$this->oSoapClient->__getLastRequest()}");
@@ -218,6 +233,8 @@ class BuckarooBaseSoap
 
     /**
      * This method creates the SOAP client headers which are needed at every request for security purposes
+     *
+     * @return void
      */
     protected function addControlBlockHeaders()
     {
@@ -231,7 +248,7 @@ class BuckarooBaseSoap
 
         // Add the headers to the SOAP client
         $soapHeaders[] = new SOAPHeader(
-            'https://checkout.buckaroo.nl/PaymentEngine/', 
+            'https://checkout.buckaroo.nl/PaymentEngine/',
             'MessageControlBlock',
             $oMessageControlBlock
         );

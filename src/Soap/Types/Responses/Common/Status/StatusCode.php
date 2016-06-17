@@ -1,6 +1,5 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Status;
 
-
 class StatusCode
 {
     /**

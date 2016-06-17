@@ -1,14 +1,10 @@
-<?php
-
-namespace SeBuDesign\Buckaroo;
+<?php namespace SeBuDesign\Buckaroo;
 
 use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException;
 use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Transaction as BuckarooSoapTransaction;
 use SeBuDesign\Buckaroo\Soap\Types\Requests\Common as BuckarooSoapCommon;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Service\Service;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body;
 
 class Transaction extends BuckarooBaseSoap
 {
@@ -43,7 +39,7 @@ class Transaction extends BuckarooBaseSoap
             'ActionError'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
         ]);
 
-        $this->oRequestBody = new BuckarooSoapTransaction\TransactionBody();
+        $this->oRequestBody = new BuckarooSoapTransaction\Body();
         $this->oRequestBody->Currency = 'EUR';
         $this->oRequestBody->StartRecurrent = false;
     }
@@ -58,6 +54,20 @@ class Transaction extends BuckarooBaseSoap
     public function setCurrency($sCurrency)
     {
         $this->oRequestBody->Currency = $sCurrency;
+
+        return $this;
+    }
+
+    /**
+     * Set the amount
+     *
+     * @param float $fAmount The amount a person has to pay
+     *
+     * @return $this
+     */
+    public function setAmount($fAmount)
+    {
+        $this->setAmountDebit($fAmount);
 
         return $this;
     }
@@ -256,7 +266,7 @@ class Transaction extends BuckarooBaseSoap
     public function setService($sService, $iServiceVersion = 2, $sAction = 'Pay')
     {
         $this->oRequestBody->Services->Service
-            = new BuckarooSoapTransaction\TransactionService($sService, $sAction, $iServiceVersion);
+            = new BuckarooSoapTransaction\Service($sService, $sAction, $iServiceVersion);
 
         return $this;
     }
@@ -342,7 +352,7 @@ class Transaction extends BuckarooBaseSoap
     public function addServiceParameter($sName, $mValue)
     {
         $this->oRequestBody->Services->Service->RequestParameter[]
-            = new BuckarooSoapCommon\RequestParameter($sName, $mValue);
+            = new BuckarooSoapCommon\Parameter($sName, $mValue);
 
         return $this;
     }
@@ -372,7 +382,7 @@ class Transaction extends BuckarooBaseSoap
     public function addCustomParameter($sName, $mValue)
     {
         $this->oRequestBody->CustomParameters->CustomParameter[]
-            = new BuckarooSoapCommon\CustomParameter($sName, $mValue);
+            = new BuckarooSoapCommon\Parameter($sName, $mValue);
 
         return $this;
     }
@@ -388,7 +398,7 @@ class Transaction extends BuckarooBaseSoap
     public function addAdditionalParameter($sName, $mValue)
     {
         $this->oRequestBody->AdditionalParameters->AdditionalParameter[]
-            = new BuckarooSoapCommon\AdditionalParameter($sName, $mValue);
+            = new BuckarooSoapCommon\Parameter($sName, $mValue);
 
         return $this;
     }
@@ -396,7 +406,7 @@ class Transaction extends BuckarooBaseSoap
     /**
      * Perform the actual call
      *
-     * @return Body
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Transaction\Body
      *
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException

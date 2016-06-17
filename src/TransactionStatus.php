@@ -1,13 +1,10 @@
 <?php namespace SeBuDesign\Buckaroo;
 
-use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionRequestException;
 use SeBuDesign\Buckaroo\Exceptions\BuckarooTransactionStatusRequestException;
 use SeBuDesign\Buckaroo\Soap\BuckarooBaseSoap;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\AdditionalParameter;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\CustomParameter;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusBody;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusTransaction;
-use SeBuDesign\Buckaroo\Soap\Types\Responses\TransactionStatus\Body;
+use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\Parameter;
+use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\Body;
+use SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\Transaction as TransactionParameter;
 
 class TransactionStatus extends BuckarooBaseSoap
 {
@@ -22,9 +19,9 @@ class TransactionStatus extends BuckarooBaseSoap
         $this->setWebsiteKey($sWebsiteKey);
         $this->setPemPath($sPemPath);
         $this->addSoapOption('classmap', [
-            'Body'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionStatus\\Body',
-            'InvalidTransaction' => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\InvalidTransactionError',
-            'Transaction'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
+            'Body'                 => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionStatus\\Body',
+            'InvalidTransaction'   => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\InvalidTransactionError',
+            'Transaction'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Transaction\\Body',
             'Status'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\Status',
             'StatusCode'           => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',
             'StatusSubCode'        => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Status\\StatusCode',
@@ -44,7 +41,7 @@ class TransactionStatus extends BuckarooBaseSoap
             'ActionError'          => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\Common\\Error\\Error',
         ]);
 
-        $this->oRequestBody = new TransactionStatusBody();
+        $this->oRequestBody = new Body();
     }
 
     /**
@@ -56,7 +53,7 @@ class TransactionStatus extends BuckarooBaseSoap
      */
     public function addTransactionByTransactionKey($sTransactionKey)
     {
-        $oTransaction = new TransactionStatusTransaction();
+        $oTransaction = new TransactionParameter();
         $oTransaction->Key = $sTransactionKey;
 
         return $this->addTransactionObject($oTransaction);
@@ -71,7 +68,7 @@ class TransactionStatus extends BuckarooBaseSoap
      */
     public function addTransactionByInvoiceNumber($sInvoice)
     {
-        $oTransaction = new TransactionStatusTransaction();
+        $oTransaction = new TransactionParameter();
         $oTransaction->Invoice = $sInvoice;
 
         return $this->addTransactionObject($oTransaction);
@@ -87,8 +84,8 @@ class TransactionStatus extends BuckarooBaseSoap
      */
     public function addTransactionByCustomParameter($sName, $mValue)
     {
-        $oCustomParameter = new CustomParameter($sName, $mValue);
-        $oTransaction = new TransactionStatusTransaction();
+        $oCustomParameter = new Parameter($sName, $mValue);
+        $oTransaction = new TransactionParameter();
         $oTransaction->CustomParameter = $oCustomParameter;
 
         return $this->addTransactionObject($oTransaction);
@@ -104,8 +101,8 @@ class TransactionStatus extends BuckarooBaseSoap
      */
     public function addTransactionByAdditionalParameter($sName, $mValue)
     {
-        $oAdditionalParameter = new AdditionalParameter($sName, $mValue);
-        $oTransaction = new TransactionStatusTransaction();
+        $oAdditionalParameter = new Parameter($sName, $mValue);
+        $oTransaction = new TransactionParameter();
         $oTransaction->AdditionalParameter = $oAdditionalParameter;
 
         return $this->addTransactionObject($oTransaction);
@@ -114,11 +111,11 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Add a transaction object to the request
      *
-     * @param \SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus\TransactionStatusTransaction $oTransaction
+     * @param TransactionParameter $oTransaction The transaction to get
      *
      * @return $this
      */
-    public function addTransactionObject(TransactionStatusTransaction $oTransaction)
+    public function addTransactionObject(TransactionParameter $oTransaction)
     {
         $this->oRequestBody->Transaction[] = $oTransaction;
 
@@ -128,7 +125,7 @@ class TransactionStatus extends BuckarooBaseSoap
     /**
      * Perform the actual SOAP call
      *
-     * @return Body
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\TransactionStatus\Body
      *
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException

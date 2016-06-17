@@ -1,9 +1,6 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus;
 
-use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\AdditionalParameter;
-use SeBuDesign\Buckaroo\Soap\Types\Requests\Common\CustomParameter;
-
-class TransactionStatusTransaction
+class Transaction
 {
     /**
      * The transaction key
@@ -22,14 +19,14 @@ class TransactionStatusTransaction
     /**
      * The custom parameters
      *
-     * @var CustomParameter[]
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Requests\Common\Parameter[]
      */
     public $CustomParameter;
 
     /**
      * The additional parameters
      *
-     * @var AdditionalParameter[]
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Requests\Common\Parameter[]
      */
     public $AdditionalParameter;
 }

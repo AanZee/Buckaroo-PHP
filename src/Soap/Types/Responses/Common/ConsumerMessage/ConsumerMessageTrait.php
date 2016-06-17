@@ -11,7 +11,7 @@ trait ConsumerMessageTrait
     {
         return $this->ConsumerMessage;
     }
-    
+
     /**
      * Does the response has a consumer message
      *

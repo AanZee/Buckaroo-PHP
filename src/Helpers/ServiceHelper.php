@@ -5,6 +5,10 @@ class ServiceHelper
     // Banking
     const SERVICE_IDEAL = 'ideal';
     const SERVICE_PAYPAL = 'paypal';
+    const SERVICE_BANCONTACT_MR_CASH = 'bancontactmrcash';
+    const SERVICE_SEPA_DIRECT_DEBIT = 'sepadirectdebit';
+    const SERVICE_SOFORT_PHYSICAL = 'Sofortueberweisung';
+    const SERVICE_SOFORT_DIGITAL_AND_SERVICES = 'SofortDigital';
 
     // Credit Cards
     const SERVICE_MASTERCARD = 'mastercard';

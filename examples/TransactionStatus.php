@@ -5,16 +5,16 @@ use SeBuDesign\Buckaroo\IdealTransaction;
 use SeBuDesign\Buckaroo\TransactionStatus;
 use SeBuDesign\Buckaroo\Helpers\ServiceHelper;
 
-$oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$iDealResponse = $oIdealTransaction
+$oTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$iDealResponse1 = $oTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setIdealIssuer(ServiceHelper::IDEAL_BUNQ)
     ->setInvoice('TEST_INVOICE')
     ->perform();
 
-$oIdealTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
-$iDealResponse2 = $oIdealTransaction
+$oTransaction = new IdealTransaction('CHANGEME', __DIR__ . '/../tests/test.pem');
+$iDealResponse2 = $oTransaction
     ->putInTestMode()
     ->setAmount(1.23)
     ->setIdealIssuer(ServiceHelper::IDEAL_BUNQ)
@@ -25,7 +25,7 @@ $oTransactionStatus = new TransactionStatus('CHANGEME', __DIR__ . '/../tests/tes
 $transactionResponse = $oTransactionStatus
     ->putInTestMode()
     ->addTransactionByTransactionKey(
-        $iDealResponse->getTransactionKey()
+        $iDealResponse1->getTransactionKey()
     )
     ->addTransactionByTransactionKey(
         $iDealResponse2->getTransactionKey()

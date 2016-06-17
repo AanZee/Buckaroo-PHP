@@ -7,7 +7,7 @@ class AdditionalParameters implements ParametersInterface
     /**
      * The additional parameters
      *
-     * @var Parameter[]
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\Parameter\Parameter[]
      */
     protected $AdditionalParameters;
 
@@ -20,7 +20,7 @@ class AdditionalParameters implements ParametersInterface
     {
         if ($this->AdditionalParameters instanceof Parameter) {
             $this->AdditionalParameters = [
-                $this->AdditionalParameters
+                $this->AdditionalParameters,
             ];
         }
 

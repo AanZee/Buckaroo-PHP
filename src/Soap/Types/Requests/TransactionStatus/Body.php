@@ -1,11 +1,11 @@
 <?php namespace SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionStatus;
 
-class TransactionStatusBody
+class Body
 {
     /**
      * The transaction
      *
-     * @var TransactionStatusTransaction[]
+     * @var Transaction[]
      */
     public $Transaction;
 }

@@ -11,7 +11,7 @@ trait StatusTrait
     {
         return $this->Status;
     }
-    
+
     /**
      * Get the status code object
      *

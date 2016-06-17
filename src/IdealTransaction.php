@@ -30,20 +30,6 @@ class IdealTransaction extends Transaction
     }
 
     /**
-     * Set the amount
-     *
-     * @param float $fAmount The amount a person has to pay
-     *
-     * @return $this
-     */
-    public function setAmount($fAmount)
-    {
-        $this->setAmountDebit($fAmount);
-
-        return $this;
-    }
-
-    /**
      * Get the static iDeal banks
      *
      * @return array
@@ -92,5 +78,29 @@ class IdealTransaction extends Transaction
                 'code' => ServiceHelper::IDEAL_BUNQ,
             ],
         ];
+    }
+
+    /**
+     * Get the iDeal banks from Buckaroo, for performance you should cache the output of this function!
+     *
+     * @return array|bool|\SeBuDesign\Buckaroo\Soap\Types\Responses\TransactionRequestSpecification\ListItemDescription
+     */
+    public function getIdealBanks()
+    {
+        $oTransactionRequestSpecification = new TransactionRequestSpecification($this->sWebsiteKey, $this->sPemPath);
+
+        if ($this->isInTestMode()) {
+            $oTransactionRequestSpecification->putInTestMode();
+        }
+
+        $oResponse = $oTransactionRequestSpecification
+            ->setService(ServiceHelper::SERVICE_IDEAL)
+            ->perform();
+
+        return $oResponse
+            ->getService(ServiceHelper::SERVICE_IDEAL)
+            ->getAction('Pay')
+            ->getRequestParameter('issuer')
+            ->getListItems();
     }
 }
