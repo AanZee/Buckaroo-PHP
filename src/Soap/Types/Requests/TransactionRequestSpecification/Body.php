@@ -5,7 +5,7 @@ class Body
     /**
      * The requested service
      *
-     * @var Services
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionRequestSpecification\Services
      */
     public $Services;
 

@@ -5,7 +5,7 @@ class Services
     /**
      * The requested service
      *
-     * @var RequestedService
+     * @var \SeBuDesign\Buckaroo\Soap\Types\Requests\TransactionRequestSpecification\RequestedService
      */
     public $RequestedService;
 }

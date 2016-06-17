@@ -19,6 +19,16 @@ class TransactionRequestSpecification extends BuckarooBaseSoap
         $this->setPemPath($sPemPath);
         $this->addSoapOption('classmap', [
             'Body'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\Body',
+            'BasicFields'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\BasicFields',
+            'FieldDescription'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\FieldDescription',
+            'Attributes'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\BasicFields',
+            'AttributeDescription'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\FieldDescription',
+            'ListItemDescription'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\ListItemDescription',
+            'Services'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\Services',
+            'ServiceDescription'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\ServiceDescription',
+            'ActionDescription'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\ActionDescription',
+            'RequestParameters'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\RequestParameter',
+            'ParameterDescription'               => 'SeBuDesign\\Buckaroo\\Soap\\Types\\Responses\\TransactionRequestSpecification\\ParameterDescription',
         ]);
 
         $this->oRequestBody = new Body();
@@ -66,7 +76,7 @@ class TransactionRequestSpecification extends BuckarooBaseSoap
     /**
      * Perform the actual SOAP call
      * 
-     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\Common\BodyInterface
+     * @return \SeBuDesign\Buckaroo\Soap\Types\Responses\TransactionRequestSpecification\Body
      *
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooArgumentException
      * @throws \SeBuDesign\Buckaroo\Exceptions\BuckarooSoapException

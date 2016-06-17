@@ -79,4 +79,28 @@ class IdealTransaction extends Transaction
             ],
         ];
     }
+
+    /**
+     * Get the iDeal banks from Buckaroo, for performance you should cache the output of this function!
+     *
+     * @return array|bool|\SeBuDesign\Buckaroo\Soap\Types\Responses\TransactionRequestSpecification\ListItemDescription
+     */
+    public function getIdealBanks()
+    {
+        $oTransactionRequestSpecification = new TransactionRequestSpecification($this->sWebsiteKey, $this->sPemPath);
+
+        if ($this->isInTestMode()) {
+            $oTransactionRequestSpecification->putInTestMode();
+        }
+
+        $oResponse = $oTransactionRequestSpecification
+            ->setService(ServiceHelper::SERVICE_IDEAL)
+            ->perform();
+
+        return $oResponse
+            ->getService(ServiceHelper::SERVICE_IDEAL)
+            ->getAction('Pay')
+            ->getRequestParameter('issuer')
+            ->getListItems();
+    }
 }
