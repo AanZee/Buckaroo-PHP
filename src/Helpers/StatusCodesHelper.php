@@ -26,7 +26,7 @@ class StatusCodesHelper
      */
     public static function isSuccessful($iStatusCode)
     {
-        return $iStatusCode === self::STATUS_SUCCESS;
+        return $iStatusCode == self::STATUS_SUCCESS;
     }
 
     /**
@@ -38,7 +38,7 @@ class StatusCodesHelper
      */
     public static function isRejected($iStatusCode)
     {
-        return $iStatusCode === self::STATUS_REJECTED;
+        return $iStatusCode == self::STATUS_REJECTED;
     }
 
     /**
