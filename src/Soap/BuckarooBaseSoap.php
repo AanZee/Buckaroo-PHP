@@ -105,6 +105,20 @@ class BuckarooBaseSoap
     }
 
     /**
+     * Set the WSDL file to load
+     *
+     * @param string $sWsdl The path/url to the WSDL
+     *
+     * @return $this
+     */
+    public function setWsdl($sWsdl)
+    {
+        $this->sSoapEndPoint = $sWsdl;
+
+        return $this;
+    }
+
+    /**
      * Set the PEM file path
      *
      * @param string $sPathToPem The path to the PEM file
