@@ -21,7 +21,7 @@ class BuckarooBaseSoap
      *
      * @var string
      */
-    protected $sSoapEndPoint = 'https://checkout.buckaroo.nl/soap/soap.svc';
+    protected $sSoapEndPoint = 'https://checkout.buckaroo.nl/soap/?singleWSDL';
 
     /**
      * The Buckaroo channel
@@ -89,7 +89,7 @@ class BuckarooBaseSoap
     public function putInTestMode()
     {
         $this->bIsTesting = true;
-        $this->sSoapEndPoint = 'https://testcheckout.buckaroo.nl/soap/soap.svc';
+        $this->sSoapEndPoint = 'https://testcheckout.buckaroo.nl/soap/soap.svc?wsdl';
 
         return $this;
     }
@@ -215,7 +215,7 @@ class BuckarooBaseSoap
             throw new BuckarooArgumentException("Missing Buckaroo website key");
         }
 
-        $this->oSoapClient = new SoapClientWSSEC("{$this->sSoapEndPoint}?wsdl", $this->aSoapOptions);
+        $this->oSoapClient = new SoapClientWSSEC($this->sSoapEndPoint, $this->aSoapOptions);
         $this->oSoapClient->loadPem($this->sPemPath);
 
         $this->addControlBlockHeaders();
