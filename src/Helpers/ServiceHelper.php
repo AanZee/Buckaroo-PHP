@@ -54,7 +54,7 @@ class ServiceHelper
             self::IDEAL_VAN_LANSCHOT,
             self::IDEAL_KNAB_BANK,
             self::IDEAL_BUNQ,
-            slef::IDEAL_MONEYOU,
+            self::IDEAL_MONEYOU,
         ]);
     }
 

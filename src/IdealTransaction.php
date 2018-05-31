@@ -77,6 +77,10 @@ class IdealTransaction extends Transaction
                 'name' => 'Bunq',
                 'code' => ServiceHelper::IDEAL_BUNQ,
             ],
+            [
+                'name' => 'Moneyou',
+                'code' => ServiceHelper::IDEAL_MONEYOU,
+            ],
         ];
     }
 
