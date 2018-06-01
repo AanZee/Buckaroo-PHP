@@ -32,7 +32,8 @@ class ServiceHelper
     const IDEAL_VAN_LANSCHOT = 'FVLBNL22';
     const IDEAL_KNAB_BANK = 'KNABNL2H';
     const IDEAL_BUNQ = 'BUNQNL2A';
-
+    const IDEAL_MONEYOU = 'MOYONL21';
+    
     /**
      * Is the string a valid iDeal bank?
      *
@@ -53,6 +54,7 @@ class ServiceHelper
             self::IDEAL_VAN_LANSCHOT,
             self::IDEAL_KNAB_BANK,
             self::IDEAL_BUNQ,
+            self::IDEAL_MONEYOU,
         ]);
     }
 
